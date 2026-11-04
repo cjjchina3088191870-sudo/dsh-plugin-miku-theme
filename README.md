@@ -9,7 +9,7 @@
 初音主题由专用管理器挂载；请一次安装这两个包，不需要玫瑰主题：
 
 ```sh
-dsh plugin --profile web add dsh-plugin-ekko-skin-manager@0.1.3 dsh-plugin-miku-theme@0.2.3
+dsh plugin --profile web add dsh-plugin-ekko-skin-manager@0.1.3 dsh-plugin-miku-theme@0.2.3 --registry=https://registry.npmjs.org
 ```
 
 安装后刷新 DSH 网页；全新浏览器会默认启用已安装的初音主题。也可打开 **账号菜单 → 设置 → Ekko 皮肤 → 初音未来**。
@@ -60,6 +60,8 @@ dsh plugin --profile web remove dsh-plugin-miku-theme
 ```
 
 如果不再使用其他 Ekko 主题，也可移除管理器。
+
+npm 安装命令指定官方源，避免新版本尚未同步到镜像时出现 `No matching version found`。
 
 ## 首次安装排查
 
