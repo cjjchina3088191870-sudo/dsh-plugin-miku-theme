@@ -1,0 +1,59 @@
+/* Theme jewellery: paint layers only; the native controls retain their DOM and actions. */
+body[data-dsh-ekko-miku]{
+ --ekko-rim:#89bdce;--ekko-rim-soft:#c8e3ed;--ekko-shine:#f7ffff;--ekko-panel:#f7fdff;--ekko-tint:#e3f8fb;--ekko-shadow:#4390b334;
+ --ekko-ribbon:url('__ASSET_ribbon__');--ekko-trim:url('__ASSET_trim__');--ekko-corners:url('__ASSET_corners__');--ekko-crest:url('__ASSET_crest__');--ekko-trim-size:360px;
+}
+body[data-dsh-ekko-miku][data-ds-dark-theme]{--ekko-rim:#73a6bf;--ekko-rim-soft:#3c5c76;--ekko-shine:#729eb6;--ekko-panel:#172e3d;--ekko-tint:#25485c;--ekko-shadow:#030f2299;}
+/* A complete frame: fine hanging trim above, a small engraved clasp below. */
+body[data-dsh-ekko-miku] [data-miku-center]{border:2px solid var(--ekko-rim-soft);border-radius:20px;box-shadow:inset 0 0 0 2px var(--ekko-shine),0 0 0 1px var(--ekko-shine),0 6px 22px var(--ekko-shadow);}
+body[data-dsh-ekko-miku] [data-miku-center]::before,
+body[data-dsh-ekko-miku] [data-miku-center]::after{content:'';position:absolute;z-index:16;pointer-events:none;user-select:none;}
+body[data-dsh-ekko-miku] [data-miku-center]::before{inset:1px 6px auto;height:20px;background:var(--ekko-trim) left top/var(--ekko-trim-size) auto repeat-x;border-radius:14px 14px 0 0;}
+body[data-dsh-ekko-miku] [data-miku-center]::after{inset:auto 10px 0;height:10px;border-bottom:1px solid var(--ekko-rim);background:var(--ekko-crest) center bottom/126px 14px no-repeat;border-radius:0 0 12px 12px;}
+body[data-dsh-ekko-miku] [data-miku-header-frame]{padding-top:23px;border-bottom-color:var(--ekko-rim-soft);}
+body[data-dsh-ekko-miku] [data-miku-header-frame] [data-conversation-header-corner]{margin-right:0;}
+body[data-dsh-ekko-miku][data-miku-page='welcome'] [data-miku-welcome-header]{padding:22px 16px 0;}
+body[data-dsh-ekko-miku] .miku-welcome-brand{padding-top:13px;}
+body[data-dsh-ekko-miku] [data-miku-header-frame] :is(button,[role='button']):hover{background:var(--ekko-tint);box-shadow:inset 0 0 0 1px var(--ekko-rim-soft);}
+body[data-dsh-ekko-miku] [data-dsh-bottom-toggle]{border:1px solid var(--ekko-rim-soft);background:var(--ekko-panel);box-shadow:inset 0 1px 0 var(--ekko-shine),0 2px 5px var(--ekko-shadow);color:var(--miku-accent);}
+body[data-dsh-ekko-miku] [data-dsh-bottom-toggle][aria-pressed='true']{background:var(--ekko-tint);border-color:var(--ekko-rim);}
+/* Sidebar stationery frame: full panel when expanded, narrow inlaid rail when folded. */
+body[data-dsh-ekko-miku] [class*='_sidebarCol']{position:relative;isolation:isolate;border-right:1px solid var(--ekko-rim);box-shadow:inset -3px 0 0 var(--ekko-shine),inset -5px 0 0 var(--ekko-rim-soft);}
+body[data-dsh-ekko-miku] [data-miku-sidebar-frame]{position:relative;}
+body[data-dsh-ekko-miku] [data-miku-sidebar-frame]::before{content:'';position:absolute;z-index:-1;inset:8px 7px;border:1px solid var(--ekko-rim-soft);border-radius:15px;pointer-events:none;box-shadow:inset 0 0 0 2px var(--ekko-shine);}
+body[data-dsh-ekko-miku] [data-miku-sidebar-frame]:not([class*='_collapsed']) [class*='_logoRow']{position:relative;min-height:62px;margin:1px 0 7px;padding-inline:7px;background:var(--ekko-corners) center/100% 100% no-repeat;border-bottom:1px solid var(--ekko-rim-soft);}
+body[data-dsh-ekko-miku] [data-miku-sidebar-frame]:not([class*='_collapsed']) [class*='_footArea']{position:relative;margin-top:7px;padding:11px 3px 2px;border-top:1px solid var(--ekko-rim-soft);background:var(--ekko-crest) center top -2px/114px 13px no-repeat;}
+body[data-dsh-ekko-miku] [data-miku-sidebar-frame]:not([class*='_collapsed']) button[aria-label='账号菜单'],
+body[data-dsh-ekko-miku] [data-miku-sidebar-frame]:not([class*='_collapsed']) button[aria-label='Account menu']{border:1px solid var(--ekko-rim-soft);border-radius:12px;background:var(--ekko-panel);box-shadow:inset 0 1px 0 var(--ekko-shine);}
+/* The new-session button is one framed surface; no styling reaches its text spans. */
+body[data-dsh-ekko-miku] [data-slot='sidebar'] button[class*='_newSession']{corner-shape:round;border:1px solid var(--ekko-rim);border-radius:16px;background:var(--ekko-panel);box-shadow:inset 0 0 0 2px var(--ekko-shine),0 0 0 1px var(--ekko-rim-soft),0 4px 9px var(--ekko-shadow);transition:background .18s ease,box-shadow .18s ease,transform .18s ease;}
+body[data-dsh-ekko-miku] [data-slot='sidebar'] button[class*='_newSession']::before{content:'';position:absolute;inset:3px;border:1px solid var(--ekko-rim-soft);border-radius:12px;background:var(--ekko-corners) center/100% 100% no-repeat;pointer-events:none;}
+body[data-dsh-ekko-miku] [data-miku-sidebar-frame]:not([class*='_collapsed']) button[class*='_newSession']{height:45px;margin:4px 3px 17px;padding-inline:12px;font-size:14px;letter-spacing:.09em;background-image:url('__ASSET_sidebar-star__');background-position:14px center;background-size:26px 26px;background-repeat:no-repeat;}
+body[data-dsh-ekko-miku] [data-miku-sidebar-frame]:not([class*='_collapsed']) button[class*='_newSession']::after{content:'';position:absolute;right:11px;top:50%;width:34px;height:20px;transform:translateY(-50%);background:var(--ekko-ribbon) center/contain no-repeat;pointer-events:none;}
+body[data-dsh-ekko-miku] [data-miku-sidebar-frame]:not([class*='_collapsed']) button[class*='_newSession'] [class*='_newSessionContent']>svg{box-sizing:border-box;width:24px;height:24px;padding:4px;border:1px solid var(--ekko-rim-soft);border-radius:50%;background:var(--ekko-tint);color:var(--miku-accent);}
+body[data-dsh-ekko-miku] [data-miku-sidebar-frame][class*='_collapsed'] button[class*='_newSession']{border-radius:13px;}
+body[data-dsh-ekko-miku] [data-miku-sidebar-frame][class*='_collapsed'] button[class*='_newSession']::before{inset:3px;border-radius:9px;background:none;}
+body[data-dsh-ekko-miku] [data-slot='sidebar'] button[class*='_newSession']:hover{background-color:var(--ekko-tint);box-shadow:inset 0 1px 0 var(--ekko-shine),0 0 0 1px var(--ekko-rim),0 5px 12px var(--ekko-shadow);}
+body[data-dsh-ekko-miku] [data-slot='sidebar'] button[class*='_newSession']:active{transform:translateY(1px);box-shadow:inset 1px 2px 5px var(--ekko-shadow);}
+body[data-dsh-ekko-miku] [data-slot='sidebar'] button[class*='_newSession']:focus-visible{outline:2px solid var(--miku-accent);outline-offset:4px;}
+/* A silk crest, tiny hanging trim and an inner engraving follow every native input card. */
+body[data-dsh-ekko-miku] [data-slot='conversation.composer'] [data-composer-card]{corner-shape:round;border:2px solid var(--ekko-rim);border-radius:24px;padding-top:20px;background-color:var(--ekko-panel);box-shadow:inset 0 0 0 2px var(--ekko-shine),0 0 0 2px var(--ekko-shine),0 0 0 3px var(--ekko-rim-soft),0 4px 0 var(--ekko-tint),0 10px 24px var(--ekko-shadow);}
+body[data-dsh-ekko-miku] [data-slot='conversation.composer'] [data-composer-card]::before{content:'';position:absolute;z-index:1;inset:3px;border:1px solid var(--ekko-rim-soft);border-radius:19px;background-image:var(--ekko-corners),var(--ekko-trim);background-position:center,left top;background-size:100% 100%,var(--ekko-trim-size) auto;background-repeat:no-repeat,repeat-x;pointer-events:none;}
+body[data-dsh-ekko-miku] [data-slot='conversation.composer'] [data-composer-card]::after{content:'';position:absolute;z-index:2;top:-23px;left:calc(50% - 49px);width:98px;height:49px;background:var(--ekko-ribbon) center/contain no-repeat;filter:drop-shadow(0 2px 1px var(--ekko-shadow));pointer-events:none;}
+body[data-dsh-ekko-miku] [data-slot='conversation.composer'] [data-composer-card]:focus-within{border-color:var(--miku-accent);box-shadow:inset 0 0 0 2px var(--ekko-shine),0 0 0 2px var(--ekko-shine),0 0 0 4px var(--ekko-rim-soft),0 10px 26px var(--ekko-shadow);}
+body[data-dsh-ekko-miku] [data-slot='conversation.composer'] [class*='_row']{border-top:1px solid color-mix(in srgb,var(--ekko-rim-soft) 55%,transparent);background-color:color-mix(in srgb,var(--ekko-tint) 45%,transparent);box-shadow:inset 0 1px 0 var(--ekko-shine);}
+body[data-dsh-ekko-miku] [data-slot='conversation.composer'] [class*='_add']{border-color:var(--ekko-rim);background:var(--ekko-panel);box-shadow:inset 0 0 0 2px var(--ekko-shine),0 2px 5px var(--ekko-shadow);}
+body[data-dsh-ekko-miku] [data-slot='conversation.composer'] button:is([aria-label='发送消息'],[aria-label='Send message']){border:1px solid var(--ekko-rim);background:var(--miku-accent);color:var(--ekko-panel);box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--ekko-shine) 45%,transparent),0 2px 6px var(--ekko-shadow);}
+body[data-dsh-ekko-miku] [data-slot='conversation.composer'] button:is([aria-label='发送消息'],[aria-label='Send message']):disabled{opacity:.4;}
+body[data-dsh-ekko-miku] [data-slot='conversation.composer'] button:is([aria-label^='访问模式'],[aria-label^='Access mode']){border-color:var(--ekko-rim-soft);background-color:var(--ekko-tint);box-shadow:inset 0 1px 0 var(--ekko-shine);}
+@container miku-main (max-width:640px){
+ body[data-dsh-ekko-miku] [data-miku-center]::before{height:13px;background-size:190px auto;}
+ body[data-dsh-ekko-miku] [data-miku-center]::after{height:8px;background-size:90px 11px;}
+ body[data-dsh-ekko-miku][data-miku-page='welcome'] [data-miku-welcome-header]{padding:19px 12px 0;}
+ body[data-dsh-ekko-miku] .miku-welcome-brand{padding-top:16px;}
+ body[data-dsh-ekko-miku] [data-slot='conversation.composer'] [data-composer-card]{border-radius:21px;padding-top:15px;}
+ body[data-dsh-ekko-miku] [data-slot='conversation.composer'] [data-composer-card]::before{border-radius:16px;background-size:100% 100%,210px auto;}
+ body[data-dsh-ekko-miku] [data-slot='conversation.composer'] [data-composer-card]::after{width:66px;height:33px;left:calc(50% - 33px);top:-16px;}
+ body[data-dsh-ekko-miku] [data-slot='conversation.composer'] [class*='_row']{border-radius:0 0 18px 18px;}
+}
+@media(prefers-reduced-motion:reduce){body[data-dsh-ekko-miku] [data-slot='sidebar'] button[class*='_newSession']{transition:none;}}

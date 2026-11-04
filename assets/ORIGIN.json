@@ -1,0 +1,155 @@
+{
+  "source": "Ekko Studio Custom / local/themes/studio",
+  "assets": {
+    "wallpaper": {
+      "source": "miku-wallpaper-v2.webp",
+      "sha256": "c7e78efdffa352c892eed75cf8246dd596f1728ab048761c39036b7de01579da",
+      "bytes": 56044
+    },
+    "hero-backdrop": {
+      "source": "miku-hero-backdrop-v3.webp",
+      "sha256": "e2e3499a6d286ad28feb6a22f9c01460b6751095dfe6988775a63bf4e23c8a8f",
+      "bytes": 196186
+    },
+    "hero-mobile": {
+      "source": "miku-hero-backdrop-mobile-v3.webp",
+      "sha256": "c431dce8f869f0f6e3b7a92b6f794aef192b6fb521b4c33f18f8764738ea9cc2",
+      "bytes": 115658
+    },
+    "figure": {
+      "source": "miku-hero-figure-v3.webp",
+      "sha256": "4e8da5d878880cf7c8253330f56d6e43af25af91095a7d71891529ebb6165b4c",
+      "bytes": 357500
+    },
+    "figure-mobile": {
+      "source": "miku-hero-figure-mobile-v3.webp",
+      "sha256": "bc4fb38eabc8a37402d5bd00233447fad10c80f9b3dde5a5960bd325af745ab0",
+      "bytes": 150630
+    },
+    "photo": {
+      "source": "miku-polaroid-v2.webp",
+      "sha256": "eb43c95e8eff934c687cec69c9cf4c3965f9340779b74b96356ae06ca31cd9aa",
+      "bytes": 102016
+    },
+    "chat": {
+      "source": "miku-hero-figure-v3.webp",
+      "sha256": "4e8da5d878880cf7c8253330f56d6e43af25af91095a7d71891529ebb6165b4c",
+      "bytes": 357500
+    },
+    "mark": {
+      "source": "sidebar-star.svg",
+      "sha256": "053a9ebff8574d554f8fb1e68b50c4f16724f78798bbb6329210c04247b39781",
+      "bytes": 308
+    },
+    "badge": {
+      "source": "miku-badge-v2.webp",
+      "sha256": "d685cf8b51a232c8dfa28e74024ab274913ed4c15acf2894a9f8ee015f4b42fa",
+      "bytes": 26038
+    },
+    "exclusive": {
+      "source": "miku-exclusive-v2.webp",
+      "sha256": "9229b5f57f45b1b90a5cbff2c40cde4b7a64743a149e71260d08dd62634cd039",
+      "bytes": 35920
+    },
+    "task-card": {
+      "source": "miku-task-card-v2.webp",
+      "sha256": "445118cb0b5ae7156f1b81ff5e31e4986658f18d47c8649b401b2b2abaa68cdd",
+      "bytes": 51184
+    },
+    "wave": {
+      "source": "miku-input-wave-v3.webp",
+      "sha256": "cbff7068eab03e957ad86ba135af8016eeeb2b565d17c2ebef71640ec38c2c4d",
+      "bytes": 48558
+    },
+    "corners": {
+      "source": "composer-miku-corners.svg",
+      "sha256": "3acb883431c3ec4c0bc4f353673121ec93d0445c62b56d6b66fe8d4e7ea140f6",
+      "bytes": 963
+    },
+    "crest": {
+      "source": "composer-miku-crest.svg",
+      "sha256": "8bfe6b789ac16843ce566aa1bf2fb7d14444f0cfea003dc7dc60a7c46dd8115d",
+      "bytes": 769
+    },
+    "heart": {
+      "source": "heart.svg",
+      "sha256": "e8c928584d31e448bee1f481e14e763567e1d8db4bbf4c79b02e25dd014b0bbd",
+      "bytes": 644
+    },
+    "sparkle": {
+      "source": "star-four.svg",
+      "sha256": "9eb321f3e042b0ab8e5215b2d1575c3eaa59a97fee58b216d6266e39556cf04e",
+      "bytes": 636
+    },
+    "code": {
+      "source": "code.svg",
+      "sha256": "63442194f730bb59bb93b679640abb963a007345d982003ba6dbafd9978ff165",
+      "bytes": 508
+    },
+    "puzzle": {
+      "source": "puzzle-piece.svg",
+      "sha256": "19b9a3b3ae87fc8f298cc07969024f591e0b6341ea28c8b8379d5ff8b7016109",
+      "bytes": 973
+    },
+    "clipboard": {
+      "source": "clipboard-text.svg",
+      "sha256": "05fd9694169628d159e4e9913f9eea0606d179e0c204da60d6861763c7a083be",
+      "bytes": 629
+    },
+    "wrench": {
+      "source": "wrench.svg",
+      "sha256": "a2dadefdfef7ec7656b20a4dd1447be452532a2a9b856693bd2b793c4f7e1cb1",
+      "bytes": 819
+    },
+    "close": {
+      "source": "x.svg",
+      "sha256": "2f88bcbd25182515d7962a9592322b08fece54303fbafc00bd032221b32e0f0b",
+      "bytes": 400
+    },
+    "photo-icon": {
+      "source": "sidebar-picture.svg",
+      "sha256": "da723a54949b613a74dda7bd3792e9adb382e7b018458bad609b4a9c07a1917c",
+      "bytes": 391
+    },
+    "trim": {
+      "source": "@local/miku-starlight-trim-v1.webp",
+      "sha256": "34325a82a74620c799c742cf17511e1fff309d7e6bd15b6dd9e721a9c185edc6",
+      "bytes": 49354
+    },
+    "ribbon": {
+      "source": "miku-bow-jewel-v1.webp",
+      "sha256": "c3dda0a51cc5aa4ee1d61796e95d741a15587a703e55a0305755965d17b79481",
+      "bytes": 48444
+    },
+    "sidebar-note": {
+      "source": "sidebar-note.svg",
+      "sha256": "f4d4daf765e46a33f83bb4458cc2ea5ff356c989a79fc4f626bf81002ea69002",
+      "bytes": 327
+    },
+    "sidebar-star": {
+      "source": "sidebar-star.svg",
+      "sha256": "053a9ebff8574d554f8fb1e68b50c4f16724f78798bbb6329210c04247b39781",
+      "bytes": 308
+    },
+    "sidebar-picture": {
+      "source": "sidebar-picture.svg",
+      "sha256": "da723a54949b613a74dda7bd3792e9adb382e7b018458bad609b4a9c07a1917c",
+      "bytes": 391
+    },
+    "sidebar-shirt": {
+      "source": "sidebar-shirt.svg",
+      "sha256": "b0bc71aef26fa5c496558d5133130844236013e9c405f8e0ec5767b76c7cf654",
+      "bytes": 362
+    },
+    "sidebar-heart": {
+      "source": "sidebar-heart.svg",
+      "sha256": "709152d65bfcbc86d6990e05857745e252ad5a8204170a04c97a62effbd43e6c",
+      "bytes": 321
+    },
+    "sidebar-planet": {
+      "source": "sidebar-planet.svg",
+      "sha256": "67f27c6310c51b227920f13d71e14e866d2ee8c6ccf0a6eec66451ac6423fe3d",
+      "bytes": 473
+    }
+  }
+}

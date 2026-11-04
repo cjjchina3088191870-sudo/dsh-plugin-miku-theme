@@ -1,0 +1,18 @@
+Miku Starlight Theme for DeepSeek Harness
+
+Visual target: the user-supplied Miku Codex screenshot.
+Artwork, wallpaper, character, mobile variant, polaroid, badge, exclusive tag,
+card background, waveform and icons are original files supplied in:
+ekko-studio-custom / local/themes/studio/assets.
+No character or artwork pixels are redrawn. assets/ORIGIN.json records the
+source paths, SHA-256 hashes and sizes. This adaptation grants no additional
+rights concerning Hatsune Miku, illustrations, names or trademarks.
+
+Original project: https://github.com/EKKOLearnAI/ekko-studio
+Custom source: https://github.com/cjjchina3088191870-sudo/ekko-studio-custom
+The original project license is retained in THIRD_PARTY_LICENSES.
+Original icon licenses are retained in THIRD_PARTY_LICENSES.
+The DeepSeek Harness native theme and plugin APIs are used as dependencies.
+No DSH runtime or independent widget implementation is copied into the plugin.
+
+2026-11-04: miku-starlight-trim-v1.webp is a generated original UI ornament. The turquoise ribbon reuses the existing Ekko Miku bow artwork.

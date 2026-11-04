@@ -1,0 +1,30 @@
+{
+  "id": "ekko-miku",
+  "name": "初音未来",
+  "nameEn": "Miku Starlight Studio",
+  "author": "Ekko Custom · DSH adaptation",
+  "tagline": "青绿音符、粉紫星光与创作舞台",
+  "taglineEn": "Turquoise melodies and a pastel starlight stage",
+  "description": "移植 Ekko 初音未来原版素材与界面风格，适配 DSH 原生工作流。",
+  "tags": [
+    "miku",
+    "pastel",
+    "music",
+    "starlight"
+  ],
+  "accent": "#19a7b3",
+  "bodyAttr": "data-dsh-ekko-miku",
+  "dshCompatibility": "0.2.1rc5",
+  "package": "dsh-plugin-miku-theme",
+  "wiring": {
+    "id": "ui-skin-ekko-miku",
+    "bundleWired": false
+  },
+  "preview": {
+    "light": "preview/light.webp",
+    "dark": "preview/dark.webp"
+  },
+  "order": 20,
+  "manager": "dsh-plugin-ekko-skin-manager",
+  "activation": "managed-provider"
+}

@@ -1,0 +1,82 @@
+{
+  "name": "dsh-plugin-miku-theme",
+  "version": "0.2.3",
+  "description": "初音未来 · 星光舞台，原生适配 DeepSeek Harness Web",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./skin.json": "./skin.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "assets",
+    "skin.json",
+    "cordis.patch.yml",
+    "preview",
+    "README.md",
+    "design-qa.md",
+    "LICENSE",
+    "NOTICE",
+    "THIRD_PARTY_LICENSES",
+    "src",
+    "scripts",
+    "test"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh": ">=0.2.1-rc.5 <0.3.0-0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "esbuild": "0.27.7",
+    "jsdom": "27.4.0"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-theme",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    },
+    "ekkoSkinProvider": 1
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjjchina3088191870-sudo/dsh-plugin-miku-theme.git"
+  },
+  "homepage": "https://github.com/cjjchina3088191870-sudo/dsh-plugin-miku-theme#readme",
+  "bugs": {
+    "url": "https://github.com/cjjchina3088191870-sudo/dsh-plugin-miku-theme/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "theme",
+    "miku"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

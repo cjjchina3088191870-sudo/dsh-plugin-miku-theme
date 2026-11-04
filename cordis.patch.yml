@@ -1,0 +1,4 @@
+- insert:
+    - id: ui-skin-ekko-miku
+      name: dsh-plugin-miku-theme
+      disabled: false
