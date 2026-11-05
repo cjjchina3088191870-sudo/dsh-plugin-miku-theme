@@ -2,17 +2,17 @@
 
 将初音星光舞台、独立人物、照片与青紫珠光界面带到 DSH Web。支持手机、浅色与深色，以及欢迎页、对话页和原生输入框。
 
-**Compatible with: dsh 0.2.1-rc.5** · Node.js ≥ 22。
+**当前源码：初音 0.2.4 + 管理器 0.1.5** · DSH ≥ 0.2.2-rc.1 · Node.js ≥ 24.9（跟随 DSH）。
 
 ## 安装并启用
 
-初音主题由专用管理器挂载；请一次安装这两个包，不需要玫瑰主题：
+本次手机导航和输入框修复已包含在 GitHub `main` 中。初音主题由专用管理器挂载；请一次安装这两个包，不需要玫瑰主题：
 
 ```sh
-dsh plugin --profile web add dsh-plugin-ekko-skin-manager@0.1.3 dsh-plugin-miku-theme@0.2.3 --registry=https://registry.npmjs.org
+dsh plugin --profile web add github:cjjchina3088191870-sudo/dsh-plugin-ekko-skin-manager#main github:cjjchina3088191870-sudo/dsh-plugin-miku-theme#main
 ```
 
-安装后刷新 DSH 网页；全新浏览器会默认启用已安装的初音主题。也可打开 **账号菜单 → 设置 → Ekko 皮肤 → 初音未来**。
+安装后重启 DSH 并刷新网页；全新浏览器会默认启用已安装的初音主题。也可打开 **账号菜单 → 设置 → Ekko 皮肤 → 初音未来**。
 
 如果你使用的 profile 不是 `web`，把命令中的 `web` 换成实际名称。请使用 DSH 的 `plugin add`，它会同时安装包并启用对应 bundle；只在其他目录执行 `npm install` 不会启用 DSH 插件。
 
@@ -20,13 +20,13 @@ dsh plugin --profile web add dsh-plugin-ekko-skin-manager@0.1.3 dsh-plugin-miku-
 
 ## 其他安装途径
 
-从 GitHub 安装，源码仓库已包含构建产物与完整素材，无需本机构建或 Ekko 源码：
+源码仓库已包含构建产物与完整素材，无需本机构建或 Ekko 源码。上一次发布到 npm 的固定版本仍可安装，但不包含本次手机导航和输入框修复：
 
 ```sh
-dsh plugin --profile web add github:cjjchina3088191870-sudo/dsh-plugin-ekko-skin-manager#v0.1.3 github:cjjchina3088191870-sudo/dsh-plugin-miku-theme#v0.2.3
+dsh plugin --profile web add dsh-plugin-ekko-skin-manager@0.1.3 dsh-plugin-miku-theme@0.2.3 --registry=https://registry.npmjs.org
 ```
 
-也可从两个仓库的 GitHub Releases 下载 `.tgz`，在下载目录执行：
+也可从两个仓库的 GitHub Releases 下载先前发布的 `.tgz`，在下载目录执行：
 
 ```sh
 dsh plugin --profile web add ./dsh-plugin-ekko-skin-manager-0.1.3.tgz ./dsh-plugin-miku-theme-0.2.3.tgz
@@ -44,6 +44,12 @@ dsh plugin --profile web add ./dsh-plugin-ekko-skin-manager-0.1.3.tgz ./dsh-plug
 - 按可用视区分配手机舞台高度，输入框下方保留约 14px；折叠按钮与新会话图标保持对齐。
 - 点击灵感卡片只追加草稿，不自动发送；切换主题保留草稿、会话及工作区。
 - 主题装饰偏好在管理器内设置，外部挂件按自己的布局运行。
+- 初音 0.2.4 配合管理器 0.1.5 / DSH 0.2.2-rc.1，可在 **设置 → Ekko 皮肤 → 手机导航方式** 选择左上角星星按钮与抽屉，或左侧纵向图标栏；仅影响竖屏手机，独立保存偏好。
+- 窄屏输入框略微加宽；速度、配额等附加项单独排列，添加、权限、模型、语音和发送按钮保持同排。
+
+| 左上角按钮与抽屉 | 左侧纵向图标栏 |
+| --- | --- |
+| ![角标导航](preview/mobile-corner.png) | ![纵向导航](preview/mobile-rail.png) |
 
 ## 更新与停用
 
