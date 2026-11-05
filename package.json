@@ -1,7 +1,7 @@
 {
   "name": "dsh-plugin-miku-theme",
   "version": "0.2.4",
-  "description": "初音未来 · 星光舞台，原生适配 DeepSeek Harness Web",
+  "description": "DeepSeek Harness 初音未来主题，支持浅深色外观与手机布局",
   "type": "module",
   "main": "./lib/index.js",
   "exports": {
