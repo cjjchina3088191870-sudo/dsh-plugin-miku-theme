@@ -6,7 +6,7 @@
 
 ## 安装并启用
 
-本次手机导航和输入框修复已包含在 GitHub `main` 中。初音主题由专用管理器挂载；请一次安装这两个包，不需要玫瑰主题：
+本次手机导航和输入框修复已包含在 GitHub `main` 中。初音主题由专用管理器挂载：
 
 ```sh
 dsh plugin --profile web add github:cjjchina3088191870-sudo/dsh-plugin-ekko-skin-manager#main github:cjjchina3088191870-sudo/dsh-plugin-miku-theme#main
