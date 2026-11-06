@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-miku-theme",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "DeepSeek Harness 初音未来主题，内置主题管理、启动视频和自定义视频上传",
   "type": "module",
   "main": "./lib/index.js",
