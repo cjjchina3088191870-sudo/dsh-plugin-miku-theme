@@ -1,3 +1,4 @@
+import {acquireHost} from '../integrated/src/host-entry.mjs';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import manifest from '../assets/manifest.json' with { type: 'json' };
@@ -19,5 +20,6 @@ export function createAssetHandler(files = manifest, directory = new URL('../ass
   };
 }
 export function apply(ctx) {
+  acquireHost(ctx,{defaultSkin:'miku'});
   ctx.inject(['webServer'], scoped => { scoped.effect(() => scoped.get('webServer').register({kind:'prefix',path:PREFIX,handler:createAssetHandler()})); });
 }

@@ -1,7 +1,7 @@
 {
   "name": "dsh-plugin-miku-theme",
-  "version": "0.2.4",
-  "description": "DeepSeek Harness 初音未来主题，支持浅深色外观与手机布局",
+  "version": "0.3.0",
+  "description": "DeepSeek Harness 初音未来主题，内置主题管理、启动视频和自定义视频上传",
   "type": "module",
   "main": "./lib/index.js",
   "exports": {
@@ -24,7 +24,9 @@
     "THIRD_PARTY_LICENSES",
     "src",
     "scripts",
-    "test"
+    "test",
+    "integrated",
+    "media"
   ],
   "engines": {
     "node": ">=22"
@@ -34,7 +36,7 @@
     "test": "node --test test/*.test.mjs"
   },
   "peerDependencies": {
-    "@deepseek-ai/dsh": ">=0.2.1-rc.5 <0.3.0-0"
+    "@deepseek-ai/dsh": ">=0.2.2-rc.1 <0.3.0-0"
   },
   "peerDependenciesMeta": {
     "@deepseek-ai/dsh": {

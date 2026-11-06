@@ -11,6 +11,6 @@ test('native artwork route serves immutable package assets and rejects paths and
  assert.equal((await fetch(url,{method:'POST'})).status,405);
 });
 test('host route is owned by the plugin effect and removed on disposal',()=>{
- let installed=false,disposed=false;const ctx={inject(keys,fn){assert.deepEqual(keys,['webServer']);fn({get:()=>({register(route){assert.equal(route.path,PREFIX);installed=true;return()=>{disposed=true}}}),effect(fn){const cleanup=fn();assert.equal(installed,true);cleanup();}})}};
+ let installed=false,disposed=false;const ctx={root:{plugin(){return{dispose(){}}}},effect(fn){return fn()},inject(keys,fn){assert.deepEqual(keys,['webServer']);fn({get:()=>({register(route){assert.equal(route.path,PREFIX);installed=true;return()=>{disposed=true}}}),effect(fn){const cleanup=fn();assert.equal(installed,true);cleanup();}})}};
  apply(ctx);assert.equal(disposed,true);
 });

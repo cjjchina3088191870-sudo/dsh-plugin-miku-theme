@@ -1,3 +1,4 @@
+import {acquireClient} from '../integrated/src/client-entry.mjs';
 import React, { useEffect } from 'react';
 import { TOKENS } from './palette.mjs';
 import { normalizeSettings, readSettings, STORAGE_KEY } from './preferences.mjs';
@@ -126,8 +127,9 @@ function mountPresentation(ctx){
  ctx.effect(()=>()=>{disposed=true;dockAlignment.dispose();observer.disconnect();localeObserver.disconnect();clearSizing();if(frame)cancelAnimationFrame(frame);window.removeEventListener('storage',storage);window.removeEventListener('resize',schedule);window.visualViewport?.removeEventListener('resize',schedule);window.visualViewport?.removeEventListener('scroll',schedule);disposeTokens?.();restoreMarks();for(const el of owned)el.remove();listeners.clear();previousAttr===null?body.removeAttribute(ATTR):body.setAttribute(ATTR,previousAttr);for(const key of ['mikuPage','mikuArtwork','mikuCompanion','mikuPolaroid'])delete body.dataset[key];body.style.removeProperty('--miku-companion-opacity');},'ekko-miku: restore presentation');
 }
 
-export const inject=['ekkoSkins'];
+export const inject=['slots','theme','layout'];
 export function apply(ctx){
+ acquireClient(ctx);
  const provider={id:'miku',plugin:{name:'ekko-miku-presentation',inject:PRESENTATION_INJECT,apply:mountPresentation},assets:ASSETS,storageKey:STORAGE_KEY,readSettings,normalizeSettings};
- ctx.effect(()=>ctx.get('ekkoSkins').register(provider),'ekko-miku: provider registration');
+ ctx.inject(['ekkoSkins'],child=>child.effect(()=>child.get('ekkoSkins').register(provider),'ekko-miku: provider registration'));
 }

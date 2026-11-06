@@ -16,3 +16,6 @@ The DeepSeek Harness native theme and plugin APIs are used as dependencies.
 No DSH runtime or independent widget implementation is copied into the plugin.
 
 2026-11-04: miku-starlight-trim-v1.webp is a generated original UI ornament. The turquoise ribbon reuses the existing Ekko Miku bow artwork.
+
+Startup video behavior, HTTP media helpers and bundled default startup clip are adapted from dsh-video-skin by Something11235 (MIT), commit 2f954a1d6ac6140880f1a58438ed746f2f7f3da4. See THIRD_PARTY_LICENSES/dsh-video-skin-LICENSE.
+Shared skin manager code is distributed under the MIT license (integrated/LICENSE).
