@@ -7,7 +7,7 @@ test('passive provider mounts only through the manager and releases its complete
  w.__ModuleLoader__={load(entry){plugin=entry.factory(id=>id==='react'?{createElement(){},useSyncExternalStore(){}}:require(id))}};
  w.eval(await readFile(new URL('../lib/client.js',import.meta.url),'utf8'));
  const ctx={get:()=>({overrideTokens(source,tokens){assert.equal(source,'dsh-plugin-miku-theme');assert.ok(Object.values(tokens).every(t=>typeof t.light==='string'&&typeof t.dark==='string'));overrides++;return()=>released++;}}),slots:{inject(name,fn){fn()},register(def){rows.push(def);return()=>rows.pop()}},effect(fn){effects.push(fn())}};
- const registration=[];plugin.apply({root:{plugin(){return{dispose(){}}}},inject(names,fn){fn({get:()=>({register(value){provider=value;return()=>{unregistered=true};}}),effect(fn){registration.push(fn())}})},effect(fn){registration.push(fn())}});
+ const registration=[];plugin.apply({root:{plugin(){return{dispose(){}}}},inject(names,fn){fn({get:()=>({register(value){if(value.id==='miku')provider=value;else assert.equal(value.id,'rose');return()=>{unregistered=true};}}),effect(fn){registration.push(fn())}})},effect(fn){registration.push(fn())}});
  assert.equal(w.document.querySelectorAll('.miku-welcome').length,0);assert.equal(w.document.querySelector('.miku-theme-styles'),null);
  provider.plugin.apply(ctx);assert.equal(w.document.body.hasAttribute('data-dsh-ekko-miku'),true);assert.equal(w.document.querySelectorAll('.miku-welcome').length,1);assert.equal(rows[0].id,'ekko-miku-draft');
  assert.equal(w.document.querySelector('[data-row-key]').getAttribute('data-miku-session-icon'),'sidebar-note');

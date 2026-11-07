@@ -1,0 +1,135 @@
+{
+  "source": "Ekko Studio Custom / local/themes/studio",
+  "assets": {
+    "wallpaper": {
+      "source": "arina/wallpaper-v1.webp",
+      "sha256": "5aad89594279fc7998db0037635ee6199b612add4319cc623b32543f560fac7c",
+      "bytes": 29658
+    },
+    "hero-backdrop": {
+      "source": "Original fictional Rose Queen / OpenAI imagegen",
+      "sha256": "07442f83683888752fce345e99c71ca9864f5ac5f86c22e1bced05b1af4e730c",
+      "bytes": 1734184
+    },
+    "hero-mobile": {
+      "source": "arina/hero-backdrop-mobile-v2.webp",
+      "sha256": "293fcdad4c993ae040bdfe45dc2f0b7ed0532e530fd68c60d7e197fefbcfc14e",
+      "bytes": 83288
+    },
+    "stage-signature": {
+      "source": "Original fictional Rose Queen / OpenAI imagegen",
+      "sha256": "07442f83683888752fce345e99c71ca9864f5ac5f86c22e1bced05b1af4e730c",
+      "bytes": 1734184
+    },
+    "figure": {
+      "source": "Original fictional Rose Queen / OpenAI imagegen",
+      "sha256": "44e89839c76ce3a5c3e4a4bcba562247ce5c3d120437b9b18e4ee27051c92eae",
+      "bytes": 2496980
+    },
+    "photo": {
+      "source": "Original fictional Rose Queen / OpenAI imagegen",
+      "sha256": "5f87bff73cd7ddd462a978452ff86b7ff253b0ef34c126a927b500b46d94cad6",
+      "bytes": 2062470
+    },
+    "chat": {
+      "source": "Original fictional Rose Queen / OpenAI imagegen",
+      "sha256": "44e89839c76ce3a5c3e4a4bcba562247ce5c3d120437b9b18e4ee27051c92eae",
+      "bytes": 2496980
+    },
+    "rose": {
+      "source": "arina/rose-mark-v1.webp",
+      "sha256": "a6be9e1d42e29355bdad81b4f77062c12349adfb08ead5ef27a991b5adf32379",
+      "bytes": 15494
+    },
+    "heart": {
+      "source": "@local/heart-fill.svg",
+      "sha256": "b749be280a21f07a4568e1701a1462744efba684d2ad92dd336934788a2a3dca",
+      "bytes": 287
+    },
+    "sparkle": {
+      "source": "@local/sparkle-thin.svg",
+      "sha256": "727370b682c31abdb4da39b453480ce705a02cca30c77dee05b4099ba3363523",
+      "bytes": 797
+    },
+    "code": {
+      "source": "@local/code-white.svg",
+      "sha256": "69f50e8391ef21c76f5c33f92bb993642674777f0336c59f9bf75dc58eda74c4",
+      "bytes": 508
+    },
+    "puzzle": {
+      "source": "@local/puzzle-fill.svg",
+      "sha256": "d353abe5ad97885d670c7f9ac990a7441e96194499befce996612050a6602f3b",
+      "bytes": 493
+    },
+    "clipboard": {
+      "source": "@local/clipboard-fill.svg",
+      "sha256": "60a92c3120dd8a0f1fc9c9424ca202bef80b2ed4923541765c2b3873d0bffc9f",
+      "bytes": 356
+    },
+    "wrench": {
+      "source": "@local/tools-fill.svg",
+      "sha256": "0444d06a7b65f02e88e0a9c846c28bf0b70b1670b73ab2e2b044654f6c48b449",
+      "bytes": 1128
+    },
+    "close": {
+      "source": "arina/x.svg",
+      "sha256": "c43eba2ef6aa9bf8072d576694530a38678d800c7e3beea9091d89f0761aae22",
+      "bytes": 400
+    },
+    "photo-icon": {
+      "source": "arina/sidebar-picture.svg",
+      "sha256": "4297270bf7823b09db728a7f153ebbe72d19dd0bed28ecbb5234e2cf421f7a06",
+      "bytes": 391
+    },
+    "corners": {
+      "source": "composer-rose-corners.svg",
+      "sha256": "3efe6c4697c4e889124ad74f7981679fa3d185ee62229186116dc314321a6921",
+      "bytes": 944
+    },
+    "crest": {
+      "source": "composer-rose-crest.svg",
+      "sha256": "377a7904779d8b40cfe98687ffc87292bd9db45ee07120684465df8b52cdb0c0",
+      "bytes": 1121
+    },
+    "trim": {
+      "source": "@local/rose-lace-trim-v1.webp",
+      "sha256": "0f2f36e48225ed73186473b5ef7b140ad849fa525d3cc6c8158f3489386a4804",
+      "bytes": 68488
+    },
+    "ribbon": {
+      "source": "@local/rose-ribbon-crest-v1.webp",
+      "sha256": "f3fe28454ef3c163607029ccb9791a0c5ae736cf35179927ec201f4a0b32dae6",
+      "bytes": 98744
+    },
+    "sidebar-note": {
+      "source": "arina/sidebar-note.svg",
+      "sha256": "765c332d56e97337ca337d440e779bc9243323f18cd4dd24d06733558ee80582",
+      "bytes": 327
+    },
+    "sidebar-star": {
+      "source": "arina/sidebar-star.svg",
+      "sha256": "a4e6e676bcdac6158e8117a591bf507b6aa2c8ac21bc5ae1c70bee2a12d11da9",
+      "bytes": 308
+    },
+    "sidebar-picture": {
+      "source": "arina/sidebar-picture.svg",
+      "sha256": "4297270bf7823b09db728a7f153ebbe72d19dd0bed28ecbb5234e2cf421f7a06",
+      "bytes": 391
+    },
+    "sidebar-shirt": {
+      "source": "arina/sidebar-shirt.svg",
+      "sha256": "92dc79f9167178919fe2c1fa57bd067b50fce67f0c139323f493866cf30139ec",
+      "bytes": 362
+    },
+    "sidebar-heart": {
+      "source": "arina/sidebar-heart.svg",
+      "sha256": "199469f834e4c1fdb91bad5c5e287a15a7fda43f7218b13853fdcb176a061b6d",
+      "bytes": 321
+    },
+    "sidebar-planet": {
+      "source": "arina/sidebar-planet.svg",
+      "sha256": "9fc1d311de31d4c5363b785eafc40d78d1bef84bcae60cf983633ec6a716efbe",
+      "bytes": 473
+    }
+  }
+}

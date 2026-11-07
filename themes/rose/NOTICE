@@ -1,0 +1,32 @@
+Ekko Rose Theme for DeepSeek Harness
+
+Visual reference and supplied artwork: the user's ekko-studio-custom repository,
+local/themes/studio, rose presentation. Original Ekko source bytes are retained for the floral backdrop, wallpaper, rose and utility icons;
+assets/ORIGIN.json lists source names, SHA-256 hashes and sizes. This package
+makes no additional grant concerning likenesses, photographs or artwork.
+
+Original project: https://github.com/EKKOLearnAI/ekko-studio
+Custom source: https://github.com/cjjchina3088191870-sudo/ekko-studio-custom
+Original project license is retained in THIRD_PARTY_LICENSES/Ekko-Studio-LICENSE.
+
+Phosphor icons: original license retained in THIRD_PARTY_LICENSES/Phosphor-LICENSE.
+
+The native DeepSeek Harness theme and plugin APIs are used as dependencies.
+No DSH runtime or other skin's implementation/artwork is copied into this package.
+
+Rose Queen portrait and polaroid: original fictional character artwork generated
+with OpenAI imagegen in November 2026. The character is not based on a real person.
+The floral hero backdrop was edited to use the Rose Queen signature while
+preserving the existing floral composition. Retained frame and floral visual
+references credit Codex-Dream-Skin, whose license is included.
+
+Additional filled icons: Phosphor Icons (MIT) and Font Awesome Free
+(screwdriver-wrench SVG; CC BY 4.0), tinted rose. Original license files
+are retained in THIRD_PARTY_LICENSES.
+
+2026-11-04: rose-lace-trim-v1.webp and rose-ribbon-crest-v1.webp are generated original UI ornaments.
+
+Startup video behavior, HTTP media helpers and bundled default startup clip are adapted from dsh-video-skin by Something11235 (MIT), commit 2f954a1d6ac6140880f1a58438ed746f2f7f3da4. See THIRD_PARTY_LICENSES/dsh-video-skin-LICENSE.
+Shared skin manager code is distributed under the MIT license (integrated/LICENSE).
+
+media/boot.webm is a VP8/Opus conversion of the same MIT-licensed startup clip credited above.

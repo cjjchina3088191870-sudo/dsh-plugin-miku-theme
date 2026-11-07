@@ -1,14 +1,15 @@
 {
   "name": "dsh-plugin-miku-theme",
-  "version": "0.3.2",
-  "description": "DeepSeek Harness 初音未来主题，支持浅深色外观与手机布局，内置主题管理及电脑、手机独立启动视频上传",
+  "version": "0.4.0",
+  "description": "DeepSeek Harness 初音未来与玫瑰女王双主题套装，内置主题管理、手机布局及电脑与手机独立启动视频上传",
   "type": "module",
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
     "./client": "./lib/client.js",
     "./skin.json": "./skin.json",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./themes/rose/skin.json": "./themes/rose/skin.json"
   },
   "files": [
     "lib",
@@ -26,7 +27,8 @@
     "scripts",
     "test",
     "integrated",
-    "media"
+    "media",
+    "themes"
   ],
   "engines": {
     "node": ">=22"
@@ -61,7 +63,11 @@
         "@deepseek-ai/dsh-client-ui-conversation"
       ]
     },
-    "ekkoSkinProvider": 1
+    "ekkoSkinProvider": 1,
+    "ekkoSkins": [
+      "miku",
+      "rose"
+    ]
   },
   "license": "SEE LICENSE IN LICENSE",
   "repository": {

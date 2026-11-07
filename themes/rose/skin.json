@@ -1,0 +1,30 @@
+{
+  "id": "ekko-rose",
+  "name": "玫瑰女王",
+  "nameEn": "Rose Queen",
+  "author": "Ekko Custom · DSH adaptation",
+  "tagline": "奶油玫瑰、丝带与灵感花房",
+  "taglineEn": "Cream roses, ribbons and a creative atelier",
+  "description": "原创虚拟玫瑰女王、奶油玫瑰花房与丝带装饰，支持浅深色外观和手机布局。",
+  "tags": [
+    "rose",
+    "cream",
+    "floral",
+    "atelier"
+  ],
+  "accent": "#c17685",
+  "bodyAttr": "data-dsh-ekko-rose",
+  "dshCompatibility": "0.2.1rc5",
+  "package": "dsh-plugin-rose-theme",
+  "wiring": {
+    "id": "ui-skin-ekko-rose",
+    "bundleWired": false
+  },
+  "preview": {
+    "light": "preview/light.webp",
+    "dark": "preview/dark.webp"
+  },
+  "order": 10,
+  "manager": "dsh-plugin-ekko-skin-manager",
+  "activation": "managed-provider"
+}

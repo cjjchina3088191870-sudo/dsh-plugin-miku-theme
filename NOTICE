@@ -21,3 +21,5 @@ Startup video behavior, HTTP media helpers and bundled default startup clip are 
 Shared skin manager code is distributed under the MIT license (integrated/LICENSE).
 
 media/boot.webm is a VP8/Opus conversion of the same MIT-licensed startup clip credited above.
+
+The bundled Rose Queen presentation and its original fictional character artwork are described in themes/rose/NOTICE; retained floral and utility artwork licenses are included in that directory.

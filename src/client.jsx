@@ -1,3 +1,4 @@
+import {apply as registerRose} from '../themes/rose/src/client.jsx';
 import {acquireClient} from '../integrated/src/client-entry.mjs';
 import React, { useEffect } from 'react';
 import { TOKENS } from './palette.mjs';
@@ -130,6 +131,7 @@ function mountPresentation(ctx){
 export const inject=['slots','theme','layout'];
 export function apply(ctx){
  acquireClient(ctx);
+ registerRose(ctx,{bundled:true});
  const provider={id:'miku',plugin:{name:'ekko-miku-presentation',inject:PRESENTATION_INJECT,apply:mountPresentation},assets:ASSETS,storageKey:STORAGE_KEY,readSettings,normalizeSettings};
  ctx.inject(['ekkoSkins'],child=>child.effect(()=>child.get('ekkoSkins').register(provider),'ekko-miku: provider registration'));
 }
