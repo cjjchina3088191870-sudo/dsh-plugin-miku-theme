@@ -4,13 +4,13 @@
 
 ## 主题预览
 
-| 浅色 | 深色 |
-| --- | --- |
-| ![初音未来浅色主题](preview/light.webp) | ![初音未来深色主题](preview/dark.webp) |
-
 | 玫瑰女王 · 浅色 | 玫瑰女王 · 深色 |
 | --- | --- |
 | ![玫瑰女王浅色](preview/rose-light.webp) | ![玫瑰女王深色](preview/rose-dark.webp) |
+
+| 初音未来 · 浅色 | 初音未来 · 深色 |
+| --- | --- |
+| ![初音未来浅色主题](preview/light.webp) | ![初音未来深色主题](preview/dark.webp) |
 
 ## 主要功能
 

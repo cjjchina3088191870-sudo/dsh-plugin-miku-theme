@@ -1,10 +1,8 @@
 [
-  "preview/light.webp",
-  "preview/dark.webp",
-  "preview/mobile-corner.png",
-  "preview/mobile-rail.png",
-  "preview/startup-settings.png",
   "preview/rose-light.webp",
   "preview/rose-dark.webp",
-  "preview/rose-mobile.png"
+  "preview/rose-mobile.png",
+  "preview/light.webp",
+  "preview/dark.webp",
+  "preview/mobile-corner.png"
 ]
