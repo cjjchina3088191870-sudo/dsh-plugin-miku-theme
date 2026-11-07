@@ -48,7 +48,7 @@ dsh plugin --profile web add dsh-plugin-miku-theme
 
 ![启动视频与上传设置](preview/startup-settings.png)
 
-视频素材感谢https://github.com/Something11235/dsh-video-skin项目
+视频素材感谢项目 https://github.com/Something11235/dsh-video-skin
 ## 手机布局
 
 | 左上角按钮与抽屉 | 左侧纵向图标栏 |
