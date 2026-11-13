@@ -40,6 +40,7 @@ dsh plugin --profile web add dsh-plugin-miku-theme
 三款主题和管理功能已包含在同一个包中。使用其他 profile 时，将命令中的 `web` 替换为对应名称。
 
 ## 启动视频
+
 进入 **设置 → Ekko 皮肤 → 所选主题 · 启动视频**，选择 **电脑端视频** 或 **手机端视频**。
 
 - 支持上传 **MP4 / WebM**，每个视频最大 **96 MiB**。
@@ -53,7 +54,6 @@ dsh plugin --profile web add dsh-plugin-miku-theme
 
 ![启动视频与上传设置](preview/startup-settings.png)
 
-视频素材感谢项目 https://github.com/Something11235/dsh-video-skin
 ## 手机布局
 
 | 左上角按钮与抽屉 | 左侧纵向图标栏 |
