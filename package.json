@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-miku-theme",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "DeepSeek Harness 初音未来、玫瑰女王与丝柯克三主题套装，内置统一主题管理、手机布局及电脑与手机独立启动视频上传",
   "type": "module",
   "main": "./lib/index.js",

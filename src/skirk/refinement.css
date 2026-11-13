@@ -199,3 +199,11 @@ body[data-dsh-ekko-skirk] [data-slot='conversation.input.model'] button:not(:has
 .skirk-title-lead .skirk-title-art{width:5.4em;}
 .skirk-title-tail .skirk-title-art{width:4.65em;}
 @media(max-width:1000px){.skirk-home-copy h1.skirk-lettered-title{flex-direction:column;align-items:flex-start;gap:.14em;}}
+/* Only replace the ordinary send arrow. Native stop, retry, queue and busy
+   symbols remain visible and retain their original click handlers. */
+body[data-dsh-ekko-skirk] [data-composer-card] button[class*='_primary']::before{display:none;}
+body[data-dsh-ekko-skirk] [data-composer-card] button[class*='_primary'] svg{visibility:visible;width:23px;height:23px;color:#f3f2ff;filter:drop-shadow(0 1px 3px #16142c);}
+body[data-dsh-ekko-skirk] [data-composer-card] button[class*='_primary']:is([aria-label='发送'],[aria-label='发送消息'],[aria-label='Send'],[aria-label='Send message']):not([data-sending]) svg{visibility:hidden;}
+body[data-dsh-ekko-skirk] [data-composer-card] button[class*='_primary']:is([aria-label='发送'],[aria-label='发送消息'],[aria-label='Send'],[aria-label='Send message']):not([data-sending])::before{display:block;}
+body[data-dsh-ekko-skirk] [data-composer-card] button[class*='_primary']:has(svg rect){filter:drop-shadow(0 0 5px #c99bff70);}
+body[data-dsh-ekko-skirk] [data-composer-card] button[class*='_primary'][data-sending]{opacity:.85;}
