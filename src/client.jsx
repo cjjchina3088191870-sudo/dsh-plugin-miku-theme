@@ -1,4 +1,5 @@
 import {apply as registerRose} from '../themes/rose/src/client.jsx';
+import {registerSkirk} from './skirk/client.jsx';
 import {acquireClient} from '../integrated/src/client-entry.mjs';
 import React, { useEffect } from 'react';
 import { TOKENS } from './palette.mjs';
@@ -56,9 +57,12 @@ function mountPresentation(ctx){
  const readCurrent=()=>({...readSettings(localStorage),enabled:true});
  let current=readCurrent(),disposeTokens,disposed=false,frame=0,welcome,companion,photo,photoSwitch,activeInput;
  const mark=(el,name)=>{if(!el)return;if(!marked.has(el))marked.set(el,new Map());const attrs=marked.get(el);if(!attrs.has(name))attrs.set(name,el.getAttribute(name));if(!el.hasAttribute(name))el.setAttribute(name,'');};
- const restoreMarks=()=>{for(const [el,attrs]of marked)for(const [name,value]of attrs)value===null?el.removeAttribute(name):el.setAttribute(name,value);marked.clear();};
+ const welcomeMarkNames=new Set(['data-miku-hero-seat','data-miku-welcome-stack','data-miku-welcome-shell','data-miku-welcome-header','data-miku-editor-root','data-miku-stage-compact']);
+ const unmark=(el,name)=>{const attrs=marked.get(el);if(!attrs?.has(name))return;const value=attrs.get(name);if(value===null){if(el.hasAttribute(name))el.removeAttribute(name);}else if(el.getAttribute(name)!==value)el.setAttribute(name,value);attrs.delete(name);if(!attrs.size)marked.delete(el);};
+ const restoreMarks=(names)=>{for(const [el,attrs]of [...marked])for(const name of [...attrs.keys()])if(!names||names.has(name))unmark(el,name);};
  const sizingObserver=typeof ResizeObserver==='function'?new ResizeObserver(schedule):null;
- function clearSizing(){sizingObserver?.disconnect();sizeTargets.clear();for(const [el,values]of layoutStyles){for(const [name,value]of Object.entries(values))value?el.style.setProperty(name,value):el.style.removeProperty(name);const previous=marked.get(el)?.get('data-miku-stage-compact');previous==null?el.removeAttribute('data-miku-stage-compact'):el.setAttribute('data-miku-stage-compact',previous);}layoutStyles.clear();}
+ function restoreSizing(el,values){for(const [name,value]of Object.entries(values))value?el.style.setProperty(name,value):el.style.removeProperty(name);unmark(el,'data-miku-stage-compact');}
+ function clearSizing(){sizingObserver?.disconnect();sizeTargets.clear();for(const [el,values]of layoutStyles)restoreSizing(el,values);layoutStyles.clear();}
  function fitStage(seat,editorRoot){
   const stage=welcome?.querySelector('.miku-stage'),cards=welcome?.querySelector('.miku-prompt-cards'),viewport=seat?.closest('[class*="_scrollBody"]');
   if(!stage||!viewport)return;
@@ -96,10 +100,14 @@ function mountPresentation(ctx){
  }
  ctx.slots.inject('conversation.input.left',()=>ctx.slots.register({name:'conversation.input.left',id:'ekko-miku-draft',order:0},DraftBridge));
  function sync(){
-  if(disposed)return;dockAlignment.sync();for(const el of marked.keys())if(!el.isConnected)marked.delete(el);
-  for(const el of sizeTargets)if(!el.isConnected){sizingObserver?.unobserve(el);sizeTargets.delete(el);layoutStyles.delete(el);}
+  if(disposed)return;dockAlignment.sync();for(const [el,attrs]of [...marked])if(!el.isConnected)for(const name of [...attrs.keys()])unmark(el,name);
+  for(const el of sizeTargets)if(!el.isConnected){sizingObserver?.unobserve(el);sizeTargets.delete(el);const values=layoutStyles.get(el);if(values)restoreSizing(el,values);layoutStyles.delete(el);}
   const center=document.querySelector('[class*="_centerCol"]'),brand=document.querySelector('[data-slot="conversation.hero.brand.mark"]');
-  const stack=brand?.closest('[class*="_root"]')?.querySelector('[class*="_stack"]'),isWelcome=!!stack;
+  const stack=brand?.closest('[class*="_root"]')?.querySelector('[class*="_stack"]');
+  const phase=center?.querySelector('[data-slot="main.conversation"] > [data-phase]');
+  // DSH reuses the home composer while creating the first session. A retained
+  // brand node cannot override the native phase during that transition.
+  const isWelcome=phase?phase.dataset.phase==='hero':!!stack;
   if(current.enabled){body.dataset.mikuPage=isWelcome?'welcome':'conversation';mark(center,'data-miku-center');mark(center?.querySelector('header[class*="_header"]'),'data-miku-header-frame');mark(document.querySelector('[data-slot="sidebar"]')?.firstElementChild,'data-miku-sidebar-frame');}else{delete body.dataset.mikuPage;restoreMarks();}
   if(current.enabled){
    for(const row of document.querySelectorAll('[data-slot="sidebar"] [data-row-key^="session:"]')){
@@ -109,7 +117,7 @@ function mountPresentation(ctx){
    }
    sessionIcons.flush();
   }
-  if(current.enabled&&stack){
+  if(current.enabled&&isWelcome&&stack){
    const seat=stack.closest('[class*="_composerHero"]');mark(seat,'data-miku-hero-seat');mark(stack,'data-miku-welcome-stack');mark(stack.parentElement,'data-miku-welcome-shell');
    mark(center?.querySelector('[class*="_headerBlank"]'),'data-miku-welcome-header');
    if(!welcome||!welcome.isConnected||welcome.lang!==language()){remove(welcome);welcome=createWelcome(text=>fillComposer(text,activeInput?.actions));owned.add(welcome);stack.prepend(welcome);}
@@ -118,11 +126,14 @@ function mountPresentation(ctx){
    const row=seat?.querySelector('[class*="_heroWorkspaceRow"]');
    if(row){if(!photoSwitch||!photoSwitch.isConnected){remove(photoSwitch);photoSwitch=node('button','miku-photo-switch');photoSwitch.type='button';photoSwitch.append(img('photo-icon'),node('span','',copy[language()].photo));photoSwitch.addEventListener('click',()=>update({polaroid:!current.polaroid}));owned.add(photoSwitch);row.append(photoSwitch);}photoSwitch.setAttribute('aria-pressed',String(current.polaroid));}
    fitStage(seat,editorRoot);
-  }else{clearSizing();remove(welcome);welcome=undefined;remove(photo);photo=undefined;remove(photoSwitch);photoSwitch=undefined;}
+  }else{clearSizing();restoreMarks(welcomeMarkNames);remove(welcome);welcome=undefined;remove(photo);photo=undefined;remove(photoSwitch);photoSwitch=undefined;}
   if(current.enabled&&center&&!isWelcome&&current.artwork&&current.companion&&document.querySelector('[data-slot="main.conversation"]')){if(!companion||!companion.isConnected){remove(companion);companion=img('chat','miku-chat-figure');owned.add(companion);center.prepend(companion);}}else{remove(companion);companion=undefined;}
  }
  function schedule(){if(!frame&&!disposed)frame=requestAnimationFrame(()=>{frame=0;sync();});}
- const observer=new MutationObserver(records=>{if(records.some(r=>[...r.addedNodes,...r.removedNodes].some(n=>n.nodeType===1&&!n.classList?.contains('miku-chat-figure')&&!n.classList?.contains('miku-welcome'))))schedule();});observer.observe(body,{childList:true,subtree:true});
+ const observer=new MutationObserver(records=>{if(records.some(r=>r.type==='attributes'
+  ?r.attributeName==='data-phase'||r.target.matches?.('[data-miku-hero-seat],[data-miku-welcome-stack],[data-miku-welcome-shell],[class*="_composerHero"]')
+  :[...r.addedNodes,...r.removedNodes].some(n=>n.nodeType===1&&!n.classList?.contains('miku-chat-figure')&&!n.classList?.contains('miku-welcome'))))schedule();});
+ observer.observe(body,{childList:true,subtree:true,attributes:true,attributeFilter:['data-phase','class']});
  const localeObserver=new MutationObserver(()=>{current={...current};for(const fn of listeners)fn();schedule();});localeObserver.observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
  const storage=e=>{if(e.key===STORAGE_KEY){current=readCurrent();render();for(const fn of listeners)fn();}};window.addEventListener('storage',storage);window.addEventListener('resize',schedule);window.visualViewport?.addEventListener('resize',schedule);window.visualViewport?.addEventListener('scroll',schedule);render();sync();
  ctx.effect(()=>()=>{disposed=true;dockAlignment.dispose();observer.disconnect();localeObserver.disconnect();clearSizing();if(frame)cancelAnimationFrame(frame);window.removeEventListener('storage',storage);window.removeEventListener('resize',schedule);window.visualViewport?.removeEventListener('resize',schedule);window.visualViewport?.removeEventListener('scroll',schedule);disposeTokens?.();restoreMarks();for(const el of owned)el.remove();listeners.clear();previousAttr===null?body.removeAttribute(ATTR):body.setAttribute(ATTR,previousAttr);for(const key of ['mikuPage','mikuArtwork','mikuCompanion','mikuPolaroid'])delete body.dataset[key];body.style.removeProperty('--miku-companion-opacity');},'ekko-miku: restore presentation');
@@ -131,6 +142,7 @@ function mountPresentation(ctx){
 export const inject=['slots','theme','layout'];
 export function apply(ctx){
  acquireClient(ctx);
+ registerSkirk(ctx);
  registerRose(ctx,{bundled:true});
  const provider={id:'miku',plugin:{name:'ekko-miku-presentation',inject:PRESENTATION_INJECT,apply:mountPresentation},assets:ASSETS,storageKey:STORAGE_KEY,readSettings,normalizeSettings};
  ctx.inject(['ekkoSkins'],child=>child.effect(()=>child.get('ekkoSkins').register(provider),'ekko-miku: provider registration'));

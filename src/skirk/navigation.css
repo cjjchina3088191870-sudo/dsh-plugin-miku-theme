@@ -1,0 +1,123 @@
+/* Desktop owns an icon rail and the native session-only drawer. Phone navigation
+   continues through the common Ekko navigation adapter. */
+@media(min-width:1001px){
+ body[data-dsh-ekko-skirk][data-skirk-desktop-navigation] .skirk-desktop-rail{display:flex;position:fixed;inset:0 auto 0 0;width:76px;z-index:71;box-sizing:border-box;padding:18px 5px 12px;flex-direction:column;align-items:stretch;gap:0;background:#15172ced;border-right:1px solid #75769d7d;}
+ .skirk-rail-brand{display:flex;flex:none;flex-direction:column;align-items:center;gap:7px;padding:0 0 20px;color:#d9d7fb;font:17px/1.1 Georgia,serif;}
+ .skirk-rail-brand :is(svg,img){display:block;width:30px;height:25px;object-fit:contain;}
+ .skirk-rail-actions{display:flex;flex:1;min-height:0;flex-direction:column;gap:9px;overflow-y:auto;scrollbar-width:none;}
+ .skirk-rail-footer{display:flex;flex:none;flex-direction:column;padding-top:10px;border-top:1px solid #65648d50;}
+ body[data-dsh-ekko-skirk] .skirk-rail-button{display:flex;flex:none;box-sizing:border-box;align-items:center;justify-content:center;flex-direction:column;gap:6px;width:66px;min-height:62px;margin:0!important;padding:6px 2px;border:1px solid transparent;border-radius:10px;background:transparent;color:#d8d6f1;font:11px/1.4 var(--ds-font-family,system-ui);cursor:pointer;}
+ .skirk-rail-glyph{display:grid;place-items:center;height:27px;}
+ .skirk-rail-glyph :is(svg,img){display:block;width:25px!important;height:25px!important;object-fit:contain;filter:none!important;}
+ .skirk-rail-label{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+ body[data-dsh-ekko-skirk] .skirk-rail-button:hover,body[data-dsh-ekko-skirk] .skirk-rail-button[aria-current]{background:#6a60bd24;border-color:#a4a0d15c;}
+ body[data-dsh-ekko-skirk] .skirk-rail-button[data-action='new']{margin-bottom:3px!important;color:#ddd9ff;}
+ body[data-dsh-ekko-skirk] .skirk-rail-button[data-action='new'] .skirk-rail-glyph{filter:drop-shadow(0 0 7px #8c74ed70);}
+ body[data-dsh-ekko-skirk] [data-skirk-frame]>[class*='_sidebarCol']{width:300px;inset:0 auto 0 76px;background:#171b33f5;border-right:1px solid #7677a58a;}
+ body[data-dsh-ekko-skirk] [data-skirk-session-drawer]{height:100%;background:transparent;}
+ /* All global entry actions live on the rail, so the flyout only contains
+    the session/workspace browser. Never move the React-owned action nodes. */
+ body[data-dsh-ekko-skirk] [data-skirk-session-drawer] :is([class*='_logoRow'],button[class*='_newSession'],nav[class*='_panelList'],[class*='_foot']){display:none!important;}
+ body[data-dsh-ekko-skirk] [data-skirk-session-drawer] [data-skirk-blank-session]{display:none!important;}
+ .skirk-session-drawer-heading{display:flex;flex:none;align-items:center;justify-content:space-between;min-height:64px;padding:12px 16px;border-bottom:1px solid #666b925c;color:#efedff;}
+ .skirk-session-drawer-heading strong{font:500 17px/1.4 'Noto Serif CJK SC',serif;letter-spacing:.1em;}
+ .skirk-session-drawer-close{min-height:32px;padding:5px 8px;border:1px solid #777ba26b;border-radius:7px;color:#b8bad4;background:#2e315459;cursor:pointer;}
+ /* A popup's real native button is geometrically placed over the proxy. This
+    preserves Menu/Popover anchoring and focus return, while remaining inert to
+    pointer interaction. Only the proxy is visible and keyboard tabbable. */
+ body[data-dsh-ekko-skirk][data-skirk-desktop-navigation] [data-skirk-frame] [data-skirk-popup-anchor]{display:block!important;position:fixed!important;inset:auto!important;left:var(--skirk-anchor-x)!important;top:var(--skirk-anchor-y)!important;width:var(--skirk-anchor-w)!important;height:var(--skirk-anchor-h)!important;min-width:0!important;max-width:none!important;visibility:visible!important;opacity:.001!important;pointer-events:none!important;z-index:72!important;transform:none!important;}
+ .skirk-session-strip{position:relative;z-index:3;display:flex;flex:none;box-sizing:border-box;align-items:center;gap:16px;height:42px;min-width:0;padding:0 20px;background:#191c36d9;border-bottom:1px solid #6d709353;backdrop-filter:blur(14px);color:#c4c5df;font:12px/1.4 var(--ds-font-family,system-ui);}
+ .skirk-session-strip[hidden]{display:none;}
+ .skirk-session-strip-label{flex:none;color:#aaaecb;letter-spacing:.08em;}
+ .skirk-session-strip-items{display:flex;flex:1;align-items:center;gap:10px;min-width:0;overflow-x:auto;scrollbar-width:none;}
+ .skirk-session-tab{position:relative;flex:0 1 240px;min-width:105px;max-width:280px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;min-height:28px;padding:5px 14px;border:1px solid transparent;border-radius:8px;color:#b9bbd8;background:transparent;font:inherit;cursor:pointer;text-align:start;}
+ .skirk-session-tab:not(:first-child)::before{content:'';position:absolute;left:-1px;top:6px;bottom:6px;border-left:1px solid #6a6c9366;}
+ .skirk-session-tab[aria-current]{color:#eeeaff;border-color:#9890d3;background:#51478266;box-shadow:inset 0 1px 0 #d6ceff18;}
+ .skirk-session-tab:hover{color:#eeeaff;background:#4c456854;}
+ .skirk-session-strip-all{flex:none;min-height:30px;padding:4px 8px;border:0;border-radius:6px;background:transparent;color:#b9bdd8;font:inherit;cursor:pointer;}
+ .skirk-session-strip-all:hover{background:#4d456e52;color:#eeebff;}
+}
+@media(max-width:1000px){.skirk-session-strip,.skirk-desktop-rail{display:none;}}
+@media(min-width:1001px) and (max-height:760px){.skirk-rail-brand{padding-bottom:10px;}.skirk-rail-actions{gap:3px;}body[data-dsh-ekko-skirk] .skirk-rail-button{min-height:54px;}}
+
+@media(min-width:1001px){body[data-dsh-ekko-skirk][data-skirk-desktop-navigation] [data-skirk-session-drawer] [data-skirk-anchor-container]{display:block!important;position:static!important;width:0!important;height:0!important;margin:0!important;padding:0!important;overflow:visible!important;}}
+
+/* Hidden native sidebar anchors still own DSH's portaled menus. Keep the
+   visible proxy's menu painted while the original anchor is outside layout. */
+body[data-dsh-ekko-skirk][data-skirk-proxy-popup] [role='menu']{position-visibility:always!important;}
+/* Crystal navigation follows the concept's proportions, while retaining the
+   host's native session, panel and menu ownership. */
+body[data-dsh-ekko-skirk]{--skirk-rail-width:clamp(88px,6.9vw,112px);}
+@media(min-width:1001px){
+ body[data-dsh-ekko-skirk][data-skirk-desktop-navigation] .skirk-desktop-rail{width:var(--skirk-rail-width);padding:20px 6px 14px;background:#17192df2 url('__ASSET_material__') center/auto 100% no-repeat;box-shadow:inset -1px 0 #e0e1ff24,3px 0 15px #0506194d;border-color:#9392bb8a;}
+ .skirk-rail-brand{padding-bottom:26px;gap:3px;color:#e6e2ff;}
+ .skirk-rail-brand :is(svg,img){width:39px;height:32px;margin-bottom:5px;}
+ .skirk-rail-brand strong{font:400 25px/1.12 Georgia,serif;letter-spacing:.02em;}
+ .skirk-rail-brand small{font:11px/1.25 Georgia,serif;text-align:center;white-space:pre-line;letter-spacing:.02em;}
+ .skirk-rail-actions{gap:10px;}
+ body[data-dsh-ekko-skirk] .skirk-rail-button{width:100%;min-height:78px;gap:9px;padding:9px 2px;border-radius:8px;font-size:12px;color:#e6e1ff;}
+ .skirk-rail-glyph{height:33px;}
+ .skirk-rail-glyph :is(svg,img){width:30px!important;height:30px!important;stroke-width:1.7;filter:drop-shadow(0 0 4px #a6a1ff29)!important;}
+ body[data-dsh-ekko-skirk] .skirk-rail-button[data-action='new']{margin-bottom:11px!important;}
+ body[data-dsh-ekko-skirk] .skirk-rail-button[data-action='new'] .skirk-rail-glyph{box-sizing:border-box;width:35px;height:35px;margin-block:4px 6px;border:1px solid #cbc4ff;background:#51457f7a;transform:rotate(45deg);box-shadow:inset 0 0 7px #9b9aff88,0 0 14px #9a79ff9e;}
+ body[data-dsh-ekko-skirk] .skirk-rail-button[data-action='new'] .skirk-rail-glyph :is(svg,img){transform:rotate(-45deg);width:28px!important;height:28px!important;}
+ body[data-dsh-ekko-skirk] .skirk-rail-button:is([data-action='new'],[data-action='menu'])::after{content:'';display:block;width:70%;height:1px;margin-top:5px;background:#9c9ac957;}
+ body[data-dsh-ekko-skirk] .skirk-rail-button:hover,body[data-dsh-ekko-skirk] .skirk-rail-button[aria-current]{background:#5e53864f;border-color:#aea7db70;box-shadow:inset 0 1px 0 #d0c9ff2e,0 0 13px #aaa1f012;}
+ body[data-dsh-ekko-skirk] [data-skirk-center]{margin-left:var(--skirk-rail-width);}
+ body[data-dsh-ekko-skirk] [data-skirk-frame]>[class*='_sidebarCol']{inset-inline-start:var(--skirk-rail-width);width:320px;background:#151a32;border-color:#b0a6db;box-shadow:inset 2px 0 #bbb5ec33,inset -3px 0 #807eb63d,16px 0 42px #04051c99;}
+ body[data-dsh-ekko-skirk][data-skirk-page='welcome'] [data-slot='conversation.header']>header{height:58px;min-height:58px;padding-block:8px;position:relative;background:#171a31c9;border-color:#8984b370;}
+ body[data-dsh-ekko-skirk] [data-skirk-header]:has(>.skirk-topbar){position:relative;}
+ body[data-dsh-ekko-skirk] [data-skirk-header]:has(>.skirk-topbar)>.skirk-header-label{display:none;}
+ body[data-dsh-ekko-skirk] [data-skirk-header]:has(>.skirk-topbar)>[data-conversation-header-leading]{visibility:hidden;}
+ body[data-dsh-ekko-skirk] [data-skirk-header]:has(>.skirk-topbar)>[class*='_titleRow']{margin-left:auto;}
+ body[data-dsh-ekko-skirk] [data-skirk-header]:has(>.skirk-topbar) [class*='_titleCluster']{display:none;}
+ body[data-dsh-ekko-skirk] [data-skirk-header]:has(>.skirk-topbar):has([class*='_titleRow']) .skirk-topbar{right:154px;}
+ .skirk-topbar{position:absolute;z-index:2;inset:7px 104px auto 24px;display:flex;align-items:center;gap:18px;min-width:0;height:43px;color:#eeeaff;font:13px/1.3 var(--ds-font-family,system-ui);}
+ .skirk-topbar button{display:flex;box-sizing:border-box;align-items:center;gap:10px;min-width:0;height:40px;min-height:40px;max-height:40px;border:1px solid #74709978;border-radius:8px;background:#1a1c32c9;color:inherit;cursor:pointer;box-shadow:inset 0 1px 0 #dbd4ff0e;}
+ .skirk-topbar button:focus-visible{outline:2px solid #a7e9ff;outline-offset:2px;}
+ .skirk-topbar button:hover{border-color:#bdb4e2;background:#48416690;}
+ .skirk-topbar-workspace{flex:0 1 235px;width:clamp(160px,17vw,235px);padding:7px 12px;}
+ .skirk-topbar-icon{display:flex;flex:none;align-items:center;justify-content:center;width:22px;height:22px;color:#ece6ff;}
+ .skirk-topbar-icon :is(img,svg){width:20px;height:20px;object-fit:contain;}
+ .skirk-topbar-label{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+ .skirk-topbar-chevron{display:flex;flex:none;margin-left:auto;}
+ .skirk-topbar-chevron img{width:13px;height:13px;object-fit:contain;}
+ .skirk-topbar-tabs{display:flex;align-items:center;flex:1;gap:12px;min-width:0;overflow:auto;scrollbar-width:none;}
+ .skirk-topbar .skirk-topbar-tab{flex:1 1 210px;min-width:120px;padding:7px 14px;border-radius:8px 8px 2px 2px;}
+ .skirk-topbar .skirk-topbar-tab[aria-current]{border-color:#c9c3ffb0;background:#494376bf;box-shadow:inset 0 1px 0 #ede9ff9e,inset 0 -1px 0 #aaa1ff99,0 0 14px #8f79ff30;color:#fff;}
+ .skirk-topbar .skirk-topbar-new:not([aria-current]){flex:0 0 38px;width:38px;min-width:38px;padding:6px;justify-content:center;border-radius:8px;}
+ .skirk-topbar .skirk-topbar-new:not([aria-current]) .skirk-topbar-label{display:none;}
+ .skirk-session-strip{height:50px;gap:17px;padding:0 25px;background:#20213bcb;border-bottom-color:#8985b47d;box-shadow:inset 0 1px 0 #d6d0ff12;}
+ .skirk-session-strip-label{font-size:12px;letter-spacing:.08em;padding-inline-end:16px;border-right:1px solid #a29ac36e;}
+ .skirk-session-strip-items{gap:16px;}
+ .skirk-session-tab{min-height:31px;padding:6px 14px;border-radius:20px;}
+ .skirk-session-tab[aria-current],.skirk-session-current-draft{color:#f2edff;border:1px solid #c0b8f1aa;background:#6554927a;box-shadow:inset 0 1px 0 #dfd6ff38,0 0 12px #8570d82e;}
+ .skirk-session-current-draft{display:block;flex:none;min-height:31px;padding:6px 18px;border-radius:20px;font:inherit;cursor:pointer;}
+ .skirk-session-tab:not(:first-child)::before{left:-8px;top:7px;bottom:7px;}
+ .skirk-session-strip-all{font-size:11px;}
+ @container skirk-center (max-width:1050px){.skirk-topbar{left:16px;right:94px;gap:10px;}.skirk-topbar-workspace{flex-basis:150px;width:150px;}.skirk-topbar-tabs{gap:7px;}.skirk-topbar .skirk-topbar-tab{min-width:110px;}.skirk-session-strip{padding-inline:16px;gap:10px;}.skirk-session-strip-label{padding-inline-end:9px;}.skirk-session-strip-items{gap:8px;}}
+}
+/* Both the desktop flyout and the host-owned phone drawer use the same art
+   and a true nine-slice crystal rim; all decoration ignores pointer input. */
+body[data-dsh-ekko-skirk] [data-slot='sidebar']{position:relative;isolation:isolate;}
+body[data-dsh-ekko-skirk] [data-slot='sidebar']::before{content:'';position:absolute;z-index:2;inset:0;background:url('__ASSET_hero__') 60% bottom/auto 70% no-repeat;opacity:.12;pointer-events:none;}
+body[data-dsh-ekko-skirk] [data-slot='sidebar']::after{content:'';position:absolute;z-index:5;inset:3px;pointer-events:none;border:14px solid transparent;border-image:url('__ASSET_frame__') 180 230 180 230/23px 28px/2px stretch;opacity:.78;}
+body[data-dsh-ekko-skirk] [data-slot='sidebar'] [data-row-key^='session:'][aria-selected='true']{border:1px solid #aaa1da7a;border-radius:7px;background:#5b4e8680;box-shadow:inset 0 1px 0 #e3dcff36;}
+body[data-dsh-ekko-skirk] [data-slot='sidebar'] [data-row-key^='workspace:']{color:#dcd7ff;}
+.skirk-session-drawer-heading{min-height:94px;box-sizing:border-box;padding:20px 21px 13px;background:#27254070;}
+.skirk-session-drawer-title{display:grid;gap:7px;}
+.skirk-session-drawer-title small{font:8px/1.4 Georgia,serif;letter-spacing:.24em;color:#bcb5e7;}
+.skirk-session-drawer-title strong{font-family:SkirkDisplay,'Noto Serif CJK SC',serif;font-weight:400;font-size:20px;color:#eee9ff;}
+.skirk-session-drawer-close{color:#ded8ff;border-color:#a29acb8a;background:#5b4c7d45;box-shadow:inset 0 1px 0 #c9bdf232;}
+@media(max-width:1000px){.skirk-topbar{display:none;}}
+@media(max-width:700px) and (orientation:portrait){
+ body[data-dsh-ekko-skirk] [data-ekko-mobile-drawer]{background:#151930!important;border-right:1px solid #b0a5dc;box-shadow:inset -2px 0 #d4c7ff40,14px 0 40px #04041d8c;}
+ body[data-dsh-ekko-skirk] [data-slot='sidebar']{background:#171b36f2;}
+ body[data-dsh-ekko-skirk] [data-slot='sidebar']::before{background-size:auto 67%;background-position:80% bottom;opacity:.16;}
+ body[data-dsh-ekko-skirk] [data-slot='sidebar'] [class*='_logoRow']{min-height:74px;padding-block:15px 12px;border-bottom:1px solid #9990c862;}
+ body[data-dsh-ekko-skirk] [data-slot='sidebar'] button[class*='_newSession']{margin:12px 14px;min-height:43px;border-radius:8px;border-color:#b6ace3b3;background:#4b426d92;box-shadow:inset 0 1px 0 #eee9ff4d,0 0 13px #9c78e022;}
+ body[data-dsh-ekko-skirk] .ekko-mobile-brand{background:#36315f;border-color:#bfb2ed;box-shadow:inset 0 0 12px #8b7bc054,0 0 13px #7662d34d;}
+ body[data-dsh-ekko-skirk] .ekko-mobile-action{background:#2b2c4c;border-color:#8b82b0;border-radius:9px;color:#e2dcff;box-shadow:inset 0 1px 0 #ccc2ff2b,0 2px 10px #07071b55;}
+ body[data-dsh-ekko-skirk][data-ekko-mobile-nav='rail'] .ekko-mobile-navigation{background:#181b35ed;border-color:#a196ce;box-shadow:inset -2px 0 #b1a6db30;}
+}
+@media(min-width:1001px) and (max-height:760px){.skirk-rail-brand{padding-bottom:10px;}.skirk-rail-brand small{display:none;}body[data-dsh-ekko-skirk] .skirk-rail-button{min-height:58px;gap:5px;}.skirk-rail-actions{gap:4px;}}

@@ -23,3 +23,7 @@ Shared skin manager code is distributed under the MIT license (integrated/LICENS
 media/boot.webm is a VP8/Opus conversion of the same MIT-licensed startup clip credited above.
 
 The bundled Rose Queen presentation and its original fictional character artwork are described in themes/rose/NOTICE; retained floral and utility artwork licenses are included in that directory.
+
+2026-11-12: Skirk / 丝柯克 is a Genshin Impact character belonging to HoYoverse. The Skirk artwork, abyss scene and crystalline frame are AI-generated fan-theme assets based on user-provided visual references. They are not official game assets. This plugin makes no claim of ownership of the character or trademarks and is not affiliated with HoYoverse. Tabler outline icons (MIT) are used in this theme; see THIRD_PARTY_LICENSES/Tabler-Icons-LICENSE.
+
+Skirk title typography includes a subset of Noto Serif CJK SC (OFL); see THIRD_PARTY_LICENSES/Noto-CJK-LICENSE.

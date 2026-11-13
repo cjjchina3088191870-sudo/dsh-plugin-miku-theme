@@ -5,7 +5,7 @@
   "author": "Ekko Custom · DSH adaptation",
   "tagline": "青绿音符、粉紫星光与创作舞台",
   "taglineEn": "Turquoise melodies and a pastel starlight stage",
-  "description": "青绿音符与粉紫星光交织的初音未来主题，支持浅深色外观与手机布局。",
+  "description": "初音未来主题，提供浅深色外观与手机布局；同一套装另含原创玫瑰女王与丝柯克，内置统一主题管理。",
   "tags": [
     "miku",
     "pastel",
@@ -14,7 +14,7 @@
   ],
   "accent": "#19a7b3",
   "bodyAttr": "data-dsh-ekko-miku",
-  "dshCompatibility": "0.2.1rc5",
+  "dshCompatibility": "0.2.2rc1",
   "package": "dsh-plugin-miku-theme",
   "wiring": {
     "id": "ui-skin-ekko-miku",
@@ -25,6 +25,5 @@
     "dark": "preview/dark.webp"
   },
   "order": 20,
-  "manager": "dsh-plugin-ekko-skin-manager",
   "activation": "managed-provider"
 }

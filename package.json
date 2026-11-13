@@ -1,7 +1,7 @@
 {
   "name": "dsh-plugin-miku-theme",
-  "version": "0.4.0",
-  "description": "DeepSeek Harness 初音未来与玫瑰女王双主题套装，内置主题管理、手机布局及电脑与手机独立启动视频上传",
+  "version": "0.4.1",
+  "description": "DeepSeek Harness 初音未来、玫瑰女王与丝柯克三主题套装，内置统一主题管理、手机布局及电脑与手机独立启动视频上传",
   "type": "module",
   "main": "./lib/index.js",
   "exports": {
@@ -28,7 +28,8 @@
     "test",
     "integrated",
     "media",
-    "themes"
+    "themes",
+    "CHANGELOG.md"
   ],
   "engines": {
     "node": ">=22"
@@ -66,7 +67,8 @@
     "ekkoSkinProvider": 1,
     "ekkoSkins": [
       "miku",
-      "rose"
+      "rose",
+      "skirk"
     ]
   },
   "license": "SEE LICENSE IN LICENSE",
@@ -82,7 +84,9 @@
     "dsh-plugin",
     "deepseek-harness",
     "theme",
-    "miku"
+    "miku",
+    "rose-queen",
+    "skirk"
   ],
   "publishConfig": {
     "access": "public",

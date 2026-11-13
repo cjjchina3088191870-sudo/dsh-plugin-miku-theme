@@ -22,19 +22,19 @@
       "bytes": 1734184
     },
     "figure": {
-      "source": "Original fictional Rose Queen / OpenAI imagegen",
-      "sha256": "44e89839c76ce3a5c3e4a4bcba562247ce5c3d120437b9b18e4ee27051c92eae",
-      "bytes": 2496980
+      "source": "Original fictional adult Chinese Rose Queen / built-in ImageGen, November2026",
+      "sha256": "5ef49ec1a2eb6cd020dd5a9717ff6a241db7291006840236b9cf88030329ea06",
+      "bytes": 2488402
     },
     "photo": {
-      "source": "Original fictional Rose Queen / OpenAI imagegen",
-      "sha256": "5f87bff73cd7ddd462a978452ff86b7ff253b0ef34c126a927b500b46d94cad6",
-      "bytes": 2062470
+      "source": "Original fictional adult Chinese Rose Queen / built-in ImageGen, November2026",
+      "sha256": "466e6f6b6e07ccd1af4927050c3fe682bbf3a150ae50efdf944270b7dfcad659",
+      "bytes": 1910563
     },
     "chat": {
-      "source": "Original fictional Rose Queen / OpenAI imagegen",
-      "sha256": "44e89839c76ce3a5c3e4a4bcba562247ce5c3d120437b9b18e4ee27051c92eae",
-      "bytes": 2496980
+      "source": "Original fictional adult Chinese Rose Queen / built-in ImageGen, November2026",
+      "sha256": "5ef49ec1a2eb6cd020dd5a9717ff6a241db7291006840236b9cf88030329ea06",
+      "bytes": 2488402
     },
     "rose": {
       "source": "arina/rose-mark-v1.webp",
