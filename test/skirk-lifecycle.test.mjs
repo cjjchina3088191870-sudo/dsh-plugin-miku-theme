@@ -86,6 +86,7 @@ test('Skirk presentation owns its scene and releases tokens, layout marks and li
     assert.equal(w.document.querySelector('[data-skirk-hero-shell]'), null);
     assert.equal(w.document.querySelector('[data-skirk-hero-content]'), null);
     assert.equal(w.document.querySelector('.skirk-welcome'), null);
+    assert.equal(w.document.querySelector('.skirk-runner-lane'), null);
     assert.equal(w.document.querySelector('.skirk-header-label'), null);
     assert.equal(w.document.body.style.getPropertyValue('--skirk-home-height'), '');
     assert.equal(seat.contains(editor), true);
@@ -94,6 +95,8 @@ test('Skirk presentation owns its scene and releases tokens, layout marks and li
     await new Promise(resolve => w.setTimeout(resolve, 60));
     assert.equal(w.document.body.dataset.skirkPage, 'welcome');
     assert.equal(w.document.querySelectorAll('.skirk-welcome').length, 1);
+    assert.equal(w.document.querySelectorAll('.skirk-runner-lane').length, 1);
+    assert.equal(w.document.querySelectorAll('.skirk-runner').length, 3);
     assert.equal(seat.hasAttribute('data-skirk-hero'), true);
     const mutations = new w.MutationObserver(() => {});
     mutations.observe(w.document.body, {attributes: true, childList: true, subtree: true});

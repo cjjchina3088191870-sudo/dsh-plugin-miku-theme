@@ -2,11 +2,12 @@ import React,{useEffect} from 'react';
 import {fillComposer} from '../client.jsx';
 import {createSkirkNavigation} from './navigation.mjs';
 import {createDockAlignment} from '../dock-alignment.mjs';
+import {createRunnerParade,positionRunnerParade} from './parade.mjs';
 import {ASSETS,STYLES} from './generated.mjs';
 import {TOKENS as BASE_TOKENS} from '../palette.mjs';
 export const STORAGE_KEY='dsh:ekko-skirk:v1';
-export const DEFAULTS={enabled:true,artwork:true,companion:true,polaroid:false,opacity:.18,mobileNav:'corner'};
-export function normalizeSettings(value){const v=value||{};return {...DEFAULTS,...Object.fromEntries(['enabled','artwork','companion'].map(k=>[k,typeof v[k]==='boolean'?v[k]:true])),mobileNav:v.mobileNav==='rail'?'rail':'corner',opacity:typeof v.opacity==='number'&&Number.isFinite(v.opacity)?Math.max(.04,Math.min(.24,v.opacity)):.18};}
+export const DEFAULTS={enabled:true,artwork:true,companion:true,runners:true,polaroid:false,opacity:.18,mobileNav:'corner'};
+export function normalizeSettings(value){const v=value||{};return {...DEFAULTS,...Object.fromEntries(['enabled','artwork','companion','runners'].map(k=>[k,typeof v[k]==='boolean'?v[k]:true])),mobileNav:v.mobileNav==='rail'?'rail':'corner',opacity:typeof v.opacity==='number'&&Number.isFinite(v.opacity)?Math.max(.04,Math.min(.24,v.opacity)):.18};}
 export function readSettings(storage){try{return normalizeSettings(JSON.parse(storage.getItem(STORAGE_KEY)));}catch{return {...DEFAULTS};}}
 const TOKENS=Object.fromEntries(Object.entries(BASE_TOKENS).map(([key])=>{
  let c='#161a35';
@@ -44,7 +45,8 @@ function welcome(insert){
  n.append(label,shortcuts);return n;
 }
 export function mountPresentation(ctx){
- const body=document.body,marked=new Map(),owned=new Set(),layout=ctx.get('layout');let frame=0,disposed=false,activeInput,home,center,scene,homeLabel,current=readSettings(localStorage);
+ const body=document.body,marked=new Map(),owned=new Set(),layout=ctx.get('layout');let frame=0,disposed=false,activeInput,home,center,scene,homeLabel,parade,paradeCard,current=readSettings(localStorage);
+ const paradeResize=typeof ResizeObserver==='function'?new ResizeObserver(()=>schedule()):null;
  const dock=createDockAlignment(),navigation=createSkirkNavigation({document,layout,assets:ASSETS});
  const mark=(n,key,value='')=>{if(!n)return;if(!marked.has(n))marked.set(n,new Map());if(!marked.get(n).has(key))marked.get(n).set(key,n.getAttribute(key));if(n.getAttribute(key)!==value)n.setAttribute(key,value);};
  const unmark=(n,key)=>{const attrs=marked.get(n);if(!attrs?.has(key))return;const previous=attrs.get(key);previous===null?n.removeAttribute(key):n.setAttribute(key,previous);attrs.delete(key);if(!attrs.size)marked.delete(n);};
@@ -76,17 +78,23 @@ export function mountPresentation(ctx){
   const shell=isHome?brand?.closest('[class*="_root"]'):null,content=shell?.querySelector('[class*="_stack"]');
   syncHomeMarks(new Map(isHome&&content?[['data-skirk-hero',stack],['data-skirk-hero-shell',shell],['data-skirk-hero-content',content]]:[]));
   if(isHome&&brand){
-   if(!home?.isConnected){remove(home);home=own(welcome(text=>fillComposer(text,activeInput?.actions)));content?.prepend(home);}
-  }else{remove(home);home=undefined;}
+   if(!home?.isConnected){remove(home);home=own(welcome(text=>fillComposer(text,activeInput?.actions)));parade=createRunnerParade(document,ASSETS);home.append(parade);content?.prepend(home);}
+  }else{remove(home);home=undefined;parade=undefined;paradeCard=undefined;paradeResize?.disconnect();}
   if(isHome){const viewport=center.querySelector('[data-conversation-scroll]'),available=viewport?.clientHeight||Math.max(620,innerHeight-92);body.style.setProperty('--skirk-home-height',available+'px');body.style.setProperty('--skirk-home-composer-height',Math.max(220,Math.round(available*.294))+'px');}
   else{body.style.removeProperty('--skirk-home-height');body.style.removeProperty('--skirk-home-composer-height');}
   const composer=center.querySelector('[data-slot="conversation.composer.bar"] [class*="_root"]');mark(composer,'data-skirk-editor');
+  if(parade&&home){
+   const card=composer?.querySelector('[data-composer-card]');
+   if(card!==paradeCard){paradeResize?.disconnect();paradeResize?.observe(home);if(card)paradeResize?.observe(card);paradeCard=card;}
+   parade.dataset.enabled=String(current.runners);parade.dataset.paused=String(document.hidden);positionRunnerParade(parade,home,card);
+  }
  }
  function schedule(){if(!frame&&!disposed)frame=requestAnimationFrame(()=>{frame=0;sync();});}
  const observer=new MutationObserver(records=>{if(records.some(r=>r.type==='attributes'?r.target.matches('[data-slot="main.conversation"] > [data-phase], [data-skirk-hero], [data-skirk-hero-shell], [data-skirk-hero-content], [data-skirk-editor]'):[...r.addedNodes,...r.removedNodes].some(n=>n.nodeType===1&&!n.classList?.contains('skirk-scene'))))schedule();});observer.observe(body,{childList:true,subtree:true,attributes:true,attributeFilter:['data-phase','class']});
  const onStorage=e=>{if(e.key===STORAGE_KEY){current=readSettings(localStorage);schedule();}};
+ const onVisibility=()=>{if(parade)parade.dataset.paused=String(document.hidden);};document.addEventListener('visibilitychange',onVisibility);
  window.addEventListener('storage',onStorage);window.addEventListener('resize',schedule);window.visualViewport?.addEventListener('resize',schedule);
  sync();
- ctx.effect(()=>()=>{disposed=true;observer.disconnect();navigation.dispose();dock.dispose();if(frame)cancelAnimationFrame(frame);release?.();window.removeEventListener('storage',onStorage);window.removeEventListener('resize',schedule);window.visualViewport?.removeEventListener('resize',schedule);for(const n of owned)n.remove();for(const[n,attrs]of marked)for(const[k,v]of attrs)v===null?n.removeAttribute(k):n.setAttribute(k,v);for(const k of ['skirkPage','skirkActive','skirkArtwork','skirkCompanion','skirkDrawer'])delete body.dataset[k];body.style.removeProperty('--skirk-mobile-figure-opacity');body.style.removeProperty('--skirk-figure-opacity');body.style.removeProperty('--skirk-viewport-height');body.style.removeProperty('--skirk-home-height');body.style.removeProperty('--skirk-home-composer-height');previous===null?body.removeAttribute('data-dsh-ekko-skirk'):body.setAttribute('data-dsh-ekko-skirk',previous);},'skirk: restore native layout and presentation');
+ ctx.effect(()=>()=>{disposed=true;observer.disconnect();paradeResize?.disconnect();document.removeEventListener('visibilitychange',onVisibility);navigation.dispose();dock.dispose();if(frame)cancelAnimationFrame(frame);release?.();window.removeEventListener('storage',onStorage);window.removeEventListener('resize',schedule);window.visualViewport?.removeEventListener('resize',schedule);for(const n of owned)n.remove();for(const[n,attrs]of marked)for(const[k,v]of attrs)v===null?n.removeAttribute(k):n.setAttribute(k,v);for(const k of ['skirkPage','skirkActive','skirkArtwork','skirkCompanion','skirkDrawer'])delete body.dataset[k];body.style.removeProperty('--skirk-mobile-figure-opacity');body.style.removeProperty('--skirk-figure-opacity');body.style.removeProperty('--skirk-viewport-height');body.style.removeProperty('--skirk-home-height');body.style.removeProperty('--skirk-home-composer-height');previous===null?body.removeAttribute('data-dsh-ekko-skirk'):body.setAttribute('data-dsh-ekko-skirk',previous);},'skirk: restore native layout and presentation');
 }
 export function registerSkirk(ctx){const provider={id:'skirk',plugin:{name:'ekko-skirk-presentation',inject:['theme','slots','layout'],apply:mountPresentation},assets:Object.fromEntries(Object.entries(ASSETS).filter(([key])=>key!=='display-font')),storageKey:STORAGE_KEY,defaults:DEFAULTS,readSettings,normalizeSettings};ctx.inject(['ekkoSkins'],child=>child.effect(()=>child.get('ekkoSkins').register(provider),'skirk provider'));}

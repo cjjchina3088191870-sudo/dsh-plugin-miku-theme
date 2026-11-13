@@ -1,0 +1,26 @@
+[
+  {
+    "name": "aether",
+    "prompt": "Use case: stylized-concept.\nAsset type: production transparent sprite sheet, a six-frame seamless right-running loop for a small website character procession.\nReference image: male Traveler Aether identity and costume ONLY; discard poster, text and background.\nCreate EXACTLY SIX full-body chibi anime sprites of the SAME male Traveler, arranged in a strict 3 columns by 2 rows grid, equal square cells, read left to right then next row. Wide canvas 1536x1024. Each cell must have ONLY ONE complete character, centered at the SAME horizontal anchor and same feet baseline, identical body scale, including safe transparent margins on every side. Cute high-quality 2.5-head-tall anime game sprite, crisp shaded illustration readable at 80px tall. Blond tousled hair with long braid, amber eyes, black/dark brown sleeveless outfit with gold accents and white/gold trailing cape, brown boots. Side profile facing RIGHT in ALL SIX cells; expression cheerful and determined. Genuine consecutive phases of a running cycle: right leg forward contact, down passing, upward airborne, opposite leg forward contact, opposite down passing, opposite upward airborne; arms counter-swing, knees bend distinctly, feet alternate, braid and cape follow the motion. Torso inclines slightly forward. No sword or extra props.\nTrue transparent background, no ground, no shadows beneath the feet, NO text, NO numbers, NO grid lines, NO labels, NO scenery, NO extra characters, NO checkerboard painted into pixels. Keep head, face, costume, limb count and rendering consistent across frames. This is an actual animation sprite sheet, not a character pose board.",
+    "tool": "built-in image_gen",
+    "frames": 6,
+    "layout": "3 × 2 original, 6 × 1 runtime",
+    "runtimeCell": 192
+  },
+  {
+    "name": "skirk",
+    "prompt": "Use case: stylized-concept.\nAsset type: production game sprite sheet, six consecutive frames of a rightward RUN CYCLE.\nReference 1 defines Skirk's identity/costume. Reference 2 is the MATCHING Aether sprite sheet for chibi style, proportions, grid and run phases only; do NOT copy its brown background.\nDraw EXACTLY SIX full-body CHIBI SKIRK sprites, 3 columns by 2 rows, canvas1536x1024, each square cell512x512. Each frame one identical character centered and same feet baseline and body scale. Match the cute high-quality anime shaded 2.5-head-tall style of Aether. Side profile facing RIGHT throughout. White/silver long hair streaming LEFT, red-violet eyes, blue crystalline hair ornament, white fitted fantasy dress with blue-violet crystal panels and small gold accents, deep blue right glove, purple thigh-high boots. Calm determined adorable expression. Distinct consecutive running phases: contact stride, low passing bent knees, airborne high knee, opposite contact stride, opposite low passing, opposite airborne. Arms counter-swing, cape/hair follow; genuine limb motion each frame. NO sword.\nThe area between and around sprites MUST BE FULLY TRANSPARENT with clean alpha edges, absolutely NO colored background, no glows behind sprites, no ground or shadow, no grid, no text, no numbers. Full bodies with boots/hair entirely within their own cells, equal scale and consistent face, anatomy, clothes. Actual animation frames, not six identical poses.",
+    "tool": "built-in image_gen",
+    "frames": 6,
+    "layout": "3 × 2 original, 6 × 1 runtime",
+    "runtimeCell": 192
+  },
+  {
+    "name": "paimon",
+    "prompt": "Use case: stylized-concept.\nAsset type: transparent six-frame animation sprite sheet of Paimon flying right to catch up to Aether and Skirk.\nReference 1: Paimon's identity and costume. Reference 2: matching chibi anime style and exact 3columns by2rows sprite-grid format.\nCreate EXACTLY SIX full-body sprites of the SAME cute chibi Paimon in a strict 3x2 equal512x512cell grid on1536x1024canvas. All sprites face RIGHT, readable cheerful three-quarter side profile. White fluffy bob hair, navy star hairclip, floating pale gold halo, blue eyes, ivory onepiece costume with rose-gold details, short white boots, trailing midnight-blue starry cape. 2-head-tall cute shaded anime. A repeated airborne pursuit/flight cycle with visibly changing arm paddling, small legs kicking alternately and cape swaying, head lifting gently then lowering, six consecutive phases. Keep the same body scale, character anchors and halo fully inside every cell with generous transparent margins. Match Aether's rendering. Paimon is actually floating with tucked/kicking feet, not standing.\nFully transparent alpha backdrop, NO colors/glows around sprites, NO ground/shadows, NO gridlines, NO text/labels/numbers, no more or fewer than six characters, consistent identity/anatomy/costume.",
+    "tool": "built-in image_gen",
+    "frames": 6,
+    "layout": "3 × 2 original, 6 × 1 runtime",
+    "runtimeCell": 192
+  }
+]
