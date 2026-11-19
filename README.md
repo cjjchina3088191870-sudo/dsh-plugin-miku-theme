@@ -90,9 +90,11 @@ dsh plugin --profile web remove dsh-plugin-miku-theme
 ## 许可
 
 代码与美术素材的使用条款见 [LICENSE](LICENSE)、[NOTICE](NOTICE) 和 [第三方许可](THIRD_PARTY_LICENSES)。
-
+本插件免费分享，请勿用于商业售卖。
+角色素材由ai辅助生成。
+《原神》角色形象与美术素材版权归 miHoYo / HoYoverse；本主题为非官方粉丝作品。
 启动视频素材与功能参考感谢 [dsh-video-skin](https://github.com/Something11235/dsh-video-skin)。
-
+侵权联系删除。
 ## 丝柯克 · 磷星环轨
 
 第三款深蓝紫主题已接入统一管理。电脑端首页使用星海舞台，聊天页采用双侧人物与居中阅读区；手机端有独立构图与双行输入工具栏。支持独立上传电脑和手机启动视频，此主题默认不附带片段。
